@@ -1,0 +1,96 @@
+/* Color swatch container */
+.color-swatches {
+  @apply fixed flex items-center justify-center pointer-events-auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 90vh; /* Ensure it doesn't go off screen */
+  overflow-y: auto; /* Allow scrolling if needed */
+  z-index: 9999;
+}
+
+.color-grid {
+  @apply grid grid-cols-3 gap-2 p-2.5 bg-gray-900/90 rounded-lg;
+  min-width: max-content;
+  max-height: calc(90vh - 2rem); /* Account for padding */
+}
+
+/* Individual color swatch */
+.color-swatch {
+  @apply w-7 h-7 /* 50% larger for mobile */
+         md:w-6 md:h-6 2xl:w-8 2xl:h-8 4xl:w-10 4xl:h-10
+         rounded-full shadow-lg 
+         transition-all duration-300 ease-in-out 
+         cursor-pointer 
+         hover:scale-110
+         hover:shadow-xl
+         hover:z-[9999]
+         border border-transparent;
+}
+
+.color-swatch.selected {
+  @apply border-white/80;
+}
+
+.color-swatch[style*="background: #FFFFFF"],
+.color-swatch[style*="background: #FFFF88"],
+.color-swatch[style*="background: #F8F8FF"],
+.color-swatch[style*="background: #FFFF11"] {
+  @apply border-gray-200;
+}
+
+.color-swatch.closing {
+  @apply opacity-0 scale-0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Color swatch label */
+.color-swatch-label {
+  @apply absolute left-1/2 top-0 
+         -translate-x-1/2 -translate-y-[calc(100%+3px)]
+         px-1 py-0.5
+         bg-gray-900
+         text-white 
+         text-[6px] md:text-[8px] 2xl:text-[10px] 4xl:text-xs
+         font-medium
+         rounded-md
+         whitespace-nowrap 
+         opacity-0
+         transition-all duration-200 
+         pointer-events-none
+         shadow-lg
+         scale-0
+         z-[9999]
+         group-hover:opacity-100
+         group-hover:scale-100;
+}
+
+/* Label arrow */
+.color-swatch-label:after {
+  content: '';
+  @apply absolute left-1/2 bottom-0 
+         translate-y-full -translate-x-1/2 
+         border-[2px] 2xl:border-[3px] 4xl:border-[4px]
+         border-transparent 
+         border-t-gray-900;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .color-grid {
+    @apply grid-cols-3 gap-1.5 p-2;
+  }
+
+  .color-swatch {
+    @apply w-4 h-4;
+  }
+
+  .color-swatch-label {
+    @apply text-[5px] px-0.5 py-0.5 -translate-y-[calc(100%+2px)];
+  }
+
+  .color-swatch-label:after {
+    @apply border-[1.5px];
+  }
+}
