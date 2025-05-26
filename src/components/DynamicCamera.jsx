@@ -18,32 +18,32 @@ export function DynamicCamera() {
   // Define presets for camera positions and targets
   const cameraPresets = {
     default: {
-      position: [0, 5, 10],
-      target: [0, 4, 0],
+      position: [0, 8, 10],
+      target: [0, 8, 0],
     },
     headstock: {
-      position: [0, 7.5, 3],
-      target: [0, 7.2, 0],
+      position: [0, 8, 3],
+      target: [0, 8, 0],
     },
     body: {
-      position: [0, 4, 6],
-      target: [0, 4, 0],
+      position: [0, 8, 6],
+      target: [0, 8, 0],
     },
     inlay: {
-      position: [0, 4.2, 3],
-      target: [0, 4.2, 0],
+      position: [0, 8, 3],
+      target: [0, 8, 0],
     },
     fretboard: {
-      position: [0, 5.0, 5],
-      target: [0, 5.0, 0],
+      position: [0, 8, 5],
+      target: [0, 8, 0],
     },
     neck: {
-      position: [-5, 5.0, 5],
-      target: [0, 5.0, 0],
+      position: [0, 8, 5],
+      target: [0, 8, 0],
     },
     neckButtons: {
-      position: [0, 5.9, 2],
-      target: [0, 5.9, 0],
+      position: [0, 8, 2],
+      target: [0, 8, 0],
     },
   };
 

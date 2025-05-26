@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Palette,
-  Guitar,
+  Shirt,
   Joystick,
 } from 'lucide-react';
 import {
@@ -183,7 +183,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
 
   return useMemo(() => [
     {
-      icon: <Guitar size={56} />,
+      icon: <Shirt size={56} />,
       label: 'Presets',
       items: guitarPresetVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,

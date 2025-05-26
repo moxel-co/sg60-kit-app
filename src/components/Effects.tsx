@@ -1,5 +1,5 @@
 import { useThree, useFrame } from '@react-three/fiber'
-import { EffectComposer, RenderPass, EffectPass, BloomEffect, ToneMappingEffect, FXAAEffect } from 'postprocessing'
+import { EffectComposer, RenderPass, EffectPass, BloomEffect, ToneMappingEffect, FXAAEffect, ToneMappingMode } from 'postprocessing'
 import { useEffect, useState } from 'react'
 import { SSGIEffect, VelocityDepthNormalPass } from './realism-effects/v2'
 import type { WebGLRenderer, Scene, Camera, Vector2 } from 'three'
@@ -36,6 +36,12 @@ export function Effects(): JSX.Element {
 
   useEffect(() => composer.setSize(size.width, size.height), [composer, size])
   useEffect(() => {
+    // Set renderer tone mapping mode to ACES_FILMIC
+    // If using three.js, use THREE.ACESFilmicToneMapping
+    // If using postprocessing, use ToneMappingMode.ACES_FILMIC
+    gl.toneMapping = (ToneMappingMode?.ACES_FILMIC ?? 5) // fallback to 5 if undefined
+    gl.toneMappingExposure = 1.0
+
     const config: SSGIConfig = {
       importanceSampling: true,
       steps: 100,//20
@@ -65,12 +71,12 @@ export function Effects(): JSX.Element {
     composer.addPass(velocityDepthNormalPass)
     composer.addPass(new EffectPass(camera, new SSGIEffect(composer, scene, camera, { ...config, velocityDepthNormalPass })))
     composer.addPass(new EffectPass(camera, new BloomEffect({ mipmapBlur: true, luminanceThreshold: 0.8, intensity: 0.1, levels: 10 })))
-    // composer.addPass(new EffectPass(camera, new FXAAEffect(), new ToneMappingEffect()))
+    composer.addPass(new EffectPass(camera, new FXAAEffect()))
 
     return () => {
       composer.removeAllPasses()
     }
-  }, [composer, camera, scene])
+  }, [composer, camera, scene, gl])
 
   useFrame((_, delta: number) => {
     gl.autoClear = true

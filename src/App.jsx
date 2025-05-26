@@ -26,28 +26,17 @@ export default function App() {
 
   return (
     <>
-      {/* <Effects /> */}
-      <EffectComposer>
-        
-        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-        {isPostEffectsEnabled && <Bloom intensity={0.2} luminanceThreshold={0.2} />}
-        {isPostEffectsEnabled && 
-        <ChromaticAberration
-          blendFunction={BlendFunction.NORMAL}
-          offset={[0.0005, 0.0005]}
-        />}
-      </EffectComposer>
-      {/* <EffectComposer>
-        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-      </EffectComposer> */}
-
+      {isPostEffectsEnabled && <Effects />}
       <DynamicCamera />
-      <Environment
+      {/* <Environment
         files={("./assets/common/latlong/jersey_1k.hdr")}
         environmentRotation={[0, Math.PI * 5 , 0]}
         backgroundRotation={[0, Math.PI * 5 , 0]}
         intensity={0.5}
-      />
+      /> */}
+      <Environment
+        preset="apartment"
+        background={true} />
       <ContactShadows position={[0, shadowOffset, 0]} opacity={0.3} />
       <Jersey />
       {isShowcaseViewEnabled && <ShowcaseCamera />}

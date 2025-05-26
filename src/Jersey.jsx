@@ -3,8 +3,6 @@ import { useFrame } from '@react-three/fiber'
 import { Text, OrbitControls, useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 import useVariant from './stores/useVariant.jsx'
-import createFresnelMaterial from './components/TranslucentMaterial.jsx'
-import { useControls } from 'leva'
 
 import { 
   BodyColorSwatches,
@@ -32,7 +30,6 @@ export function Jersey(props) {
   const inlay2 = useVariant((state) => state.inlay2);
   const starPowerButton = useVariant((state) => state.starPowerButton);
   const texture = useVariant((state) => state.texture);
-  console.log(texture)
   const bodyColorState = useVariant((state) => state.bodyColor);
   const headstockColorState = useVariant((state) => state.headstockColor);
   const arcadeButtonColorState = useVariant((state) => state.arcadeButtonColor);
@@ -61,7 +58,7 @@ export function Jersey(props) {
 
 
   // Define textures
-  const t_color = useTexture(`./assets/${asset_name}/${texture}.png`);
+  const t_color = useTexture(`./assets/${asset_name}/color.png`);
   const t_normal = useTexture(`./assets/${asset_name}/normal.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
@@ -71,16 +68,126 @@ export function Jersey(props) {
 
   // Define material library
   const m_jersyMat = new THREE.MeshStandardMaterial({map: t_color, roughness: 0.7, normalMap: t_normal, normalScale: new THREE.Vector2(0.3, 0.3)})
+  const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
+  const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
+
+// Create a mapping between material names and material objects
+  const materialMapping = {
+    '_jersey_': m_jersyMat,
+    '_shorts_': m_grey,
+    '_socks_': m_grey,
+    '_body_': m_body,
+  }
+
+  // Assign materials to geometries based on their names
+  Object.keys(nodes).forEach(key => {
+    Object.keys(materialMapping).forEach(materialKey => {
+      if (key.includes(materialKey)) {
+        nodes[key].material = materialMapping[materialKey]
+      }
+    })
+  })
 
   return (
     <group {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.jersey_geo.geometry}
-        material={m_jersyMat}
-        position={[0, -2.5, 0]}
-      />
+      <group name='default' visible={false}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.default_jersey_geo.geometry}
+          material={nodes.default_jersey_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.default_shorts_geo.geometry}
+          material={nodes.default_shorts_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.default_socks_geo.geometry}
+          material={nodes.default_socks_geo.material}
+        />
+      </group>
+      <group name='poseA' visible={true}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseA_body_geo.geometry}
+          material={nodes.poseA_body_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseA_jersey_geo.geometry}
+          material={nodes.poseA_jersey_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseA_shorts_geo.geometry}
+          material={nodes.poseA_shorts_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseA_socks_geo.geometry}
+          material={nodes.poseA_socks_geo.material}
+        />
+      </group>
+      <group name='poseB' visible={false}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseB_body_geo.geometry}
+          material={nodes.poseB_body_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseB_jersey_geo.geometry}
+          material={nodes.poseB_jersey_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseB_shorts_geo.geometry}
+          material={nodes.poseB_shorts_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseB_socks_geo.geometry}
+          material={nodes.poseB_socks_geo.material}
+        />
+      </group>
+      <group name='poseC' visible={false}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseC_body_geo.geometry}
+          material={nodes.poseC_body_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseC_jersey_geo.geometry}
+          material={nodes.poseC_jersey_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseC_shorts_geo.geometry}
+          material={nodes.poseC_shorts_geo.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.poseC_socks_geo.geometry}
+          material={nodes.poseC_socks_geo.material}
+        />
+      </group>
     </group>
   )
 }
