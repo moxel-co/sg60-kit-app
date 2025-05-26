@@ -23,13 +23,6 @@ const asset_name = 'prpJersey'
 export function Jersey(props) {
   const { nodes, materials } = useGLTF(`./assets/${asset_name}/model.glb`)
 
-  const body = useVariant((state) => state.body);
-  const headstock = useVariant((state) => state.headstock);
-  const headstock2 = useVariant((state) => state.headstock2);
-  const inlay = useVariant((state) => state.inlay);
-  const inlay2 = useVariant((state) => state.inlay2);
-  const starPowerButton = useVariant((state) => state.starPowerButton);
-  const texture = useVariant((state) => state.texture);
   const bodyColorState = useVariant((state) => state.bodyColor);
   const headstockColorState = useVariant((state) => state.headstockColor);
   const arcadeButtonColorState = useVariant((state) => state.arcadeButtonColor);
