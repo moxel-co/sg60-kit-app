@@ -25,7 +25,7 @@ export function DynamicCamera() {
       position: [0, 8, 3],
       target: [0, 8, 0],
     },
-    body: {
+    base: {
       position: [0, 8, 6],
       target: [0, 8, 0],
     },

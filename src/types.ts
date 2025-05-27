@@ -7,17 +7,17 @@ export interface ColorSwatch {
   metalness?: number;
 }
 
-export interface GuitarVariant {
+export interface JerseyVariant {
   id: string;
   name: string;
-  type: 'headstock' | 'body' | 'inlay';
+  type: 'base' | 'graphics' | 'monogram';
   icon: ReactNode;
   texture: string;
   shadowOffset: number;
   offsetPos: number[];
 }
 
-export interface GuitarPresets {
+export interface JerseyPresets {
   id: string;
   name: string;
   type: 'preset';

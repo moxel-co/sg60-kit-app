@@ -36,6 +36,7 @@ export function Jersey(props) {
   const hardwareColorState = useVariant((state) => state.hardwareColor);
   const strummerSideColorState = useVariant((state) => state.strummerSideColor);
   const poseState = useVariant((state) => state.pose);
+  const textureState = useVariant((state) => state.texture);
 
 
   // Color library
@@ -55,6 +56,7 @@ export function Jersey(props) {
   // Define textures
   const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
   const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
+  const texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${textureState}.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
   t_normal.repeat = new THREE.Vector2(1, 1);
@@ -65,15 +67,15 @@ export function Jersey(props) {
   const m_jersyMat = new THREE.MeshStandardMaterial({map: t_color, roughness: 0.7, normalMap: t_normal, normalScale: new THREE.Vector2(0.3, 0.3)})
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
   const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
-  const m_jerseyLayered = LayeredMaterial
+  const m_jerseyLayered = LayeredMaterial({texture})
 
 
 
 // Create a mapping between material names and material objects
   const materialMapping = {
     '_jersey_': m_jerseyLayered,
-    '_shorts_': m_grey,
-    '_socks_': m_grey,
+    '_shorts_': m_body,
+    '_socks_': m_body,
     '_body_': m_body,
   }
 

@@ -3,9 +3,9 @@ import {
     BodyArrowIcon,
     BodyShredHammerIcon,
 } from '../data/icons';
-import { GuitarPresets } from '../types';
+import { JerseyPresets } from '../types';
 
-export const guitarPresets: GuitarPresets[] = [
+export const jerseyPresets: JerseyPresets[] = [
     // Body Presets
     {
         id: 'preset_arrow',

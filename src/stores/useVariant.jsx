@@ -6,7 +6,7 @@ export default create((set, get) => ({
     body: 'body_arrow',
     headstock: 'headstock_arrow',
     headstock2: 'headstock_arrow',
-    texture: 'design-1',
+    texture: 'base-design-1',
     inlay: 'inlay_sharkfin',
     inlay2: 'inlay_sharkfin',
     starPowerButton: true,

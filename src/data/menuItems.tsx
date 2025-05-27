@@ -31,16 +31,16 @@ import {
   StrummerSideColorSwatches
 } from './colors';
 import useVariant from '../stores/useVariant';
-import { guitarVariants } from './guitar';
-import { guitarPresets } from './presets.ts';
+import { jerseyVariants } from './jersey.ts';
+import { jerseyPresets } from './presets.ts';
 import { ReactNode, useMemo } from 'react';
 
 
 // Get current selected variants
-const bodyVariants = guitarVariants.filter((variant) => variant.type === 'body' || variant.type === 'bodyDual');
-const headstockVariants = guitarVariants.filter((variant) => variant.type === 'headstock');
-const inlayVariants = guitarVariants.filter((variant) => variant.type === 'inlay');
-const guitarPresetVariants = guitarPresets.filter((variant) => variant.type === 'preset');
+const baseVariants = jerseyVariants.filter((variant) => variant.type === 'base');
+const graphicsVariants = jerseyVariants.filter((variant) => variant.type === 'graphics');
+const monogramVariants = jerseyVariants.filter((variant) => variant.type === 'monogram');
+const jerseyPresetVariants = jerseyPresets.filter((variant) => variant.type === 'preset');
 
 
 // Dynamic icons for menu items based on selected variant
@@ -48,7 +48,7 @@ const HeadstockIcon = () => {
   const headstock = useVariant((state) => state.headstock);
   const headstockColorState = useVariant((state) => state.headstockColor);
   const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
-  const variant = guitarVariants.find(v => v.id === `${headstock}`);
+  const variant = jerseyVariants.find(v => v.id === `${headstock}`);
   const IconComponent = variant?.icon || HeadStockReliableIcon;
   return <IconComponent size={56} color={headstockColor.color} />;
 };
@@ -57,7 +57,7 @@ const HeadstockIcon2 = () => {
   const headstock = useVariant((state) => state.headstock2);
   const headstockColorState = useVariant((state) => state.headstockColor);
   const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
-  const variant = guitarVariants.find(v => v.id === `${headstock}`);
+  const variant = jerseyVariants.find(v => v.id === `${headstock}`);
   const IconComponent = variant?.icon || HeadStockReliableIcon;
   return <IconComponent size={56} color={headstockColor.color} />;
 };
@@ -66,7 +66,7 @@ const BodyIcon = () => {
   const body = useVariant((state) => state.body);
   const bodyColorState = useVariant((state) => state.bodyColor);
   const bodyColor = BodyColorSwatches.find((color) => color.name === bodyColorState);
-  const variant = guitarVariants.find(v => v.id === `${body}`);
+  const variant = jerseyVariants.find(v => v.id === `${body}`);
   const IconComponent = variant?.icon || BodyReliableIcon;
   return <IconComponent size={56} color={bodyColor.color} />;
 };
@@ -75,7 +75,7 @@ const InlayIcon = () => {
   const inlay = useVariant((state) => state.inlay);
   const inlayColorState = useVariant((state) => state.inlayColor);
   const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
-  const variant = guitarVariants.find(v => v.id === `${inlay}`);
+  const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
   return <IconComponent size={56} color={inlayColor.color} />;
 };
@@ -84,7 +84,7 @@ const InlayIcon2 = () => {
   const inlay = useVariant((state) => state.inlay2);
   const inlayColorState = useVariant((state) => state.inlayColor);
   const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
-  const variant = guitarVariants.find(v => v.id === `${inlay}`);
+  const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
   return <IconComponent size={56} color={inlayColor.color} />;
 };
@@ -99,7 +99,7 @@ const BodyColorIcon = () => {
   const body = useVariant((state) => state.body);
   const bodyColorState = useVariant((state) => state.bodyColor);
   const bodyColor = BodyColorSwatches.find((color) => color.name === bodyColorState);
-  const variant = guitarVariants.find(v => v.id === `${body}`);
+  const variant = jerseyVariants.find(v => v.id === `${body}`);
   const IconComponent = variant?.icon || BodyReliableIcon;
   return <IconComponent size={56} color={bodyColor.color} />;
 };
@@ -114,7 +114,7 @@ const HeadstockColorIcon = () => {
   const headstock = useVariant((state) => state.headstock);
   const headstockColorState = useVariant((state) => state.headstockColor);
   const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
-  const variant = guitarVariants.find(v => v.id === `${headstock}`);
+  const variant = jerseyVariants.find(v => v.id === `${headstock}`);
   const IconComponent = variant?.icon || HeadStockArrowIcon;
   return <IconComponent size={56} color={headstockColor.color} />;
 }
@@ -134,7 +134,7 @@ const InlayColorIcon = () => {
   const inlay = useVariant((state) => state.inlay);
   const inlayColorState = useVariant((state) => state.inlayColor);
   const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
-  const variant = guitarVariants.find(v => v.id === `${inlay}`);
+  const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
   return <IconComponent size={56} color={inlayColor.color} />;
 };
@@ -185,7 +185,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
     {
       icon: <Shirt size={56} />,
       label: 'Presets',
-      items: guitarPresetVariants.map((variant) => ({
+      items: jerseyPresetVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {
@@ -227,7 +227,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
     {
       icon: <BodyIcon /> as ReactNode,
       label: 'Base Design',
-      items: bodyVariants.map((variant) => ({
+      items: baseVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {
@@ -245,7 +245,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
     {
       icon: <HeadstockIcon /> as ReactNode,
       label: 'Graphics',
-      items: headstockVariants.map((variant) => ({
+      items: graphicsVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {
@@ -258,7 +258,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
     {
       icon: <InlayIcon /> as ReactNode,
       label: 'Monogram',
-      items: inlayVariants.map((variant) => ({
+      items: monogramVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {

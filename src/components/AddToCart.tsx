@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useVariant from '../stores/useVariant';
 import { ShoppingCart, PackagePlus } from 'lucide-react';
-import { guitarVariants } from '../data/guitar';
+import { guitarVariants } from '../data/jersey';
 
 const AddToCartButton = () => {
     const [isHovered, setIsHovered] = useState(false);
