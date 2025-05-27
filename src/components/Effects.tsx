@@ -36,11 +36,7 @@ export function Effects(): JSX.Element {
 
   useEffect(() => composer.setSize(size.width, size.height), [composer, size])
   useEffect(() => {
-    // Set renderer tone mapping mode to ACES_FILMIC
-    // If using three.js, use THREE.ACESFilmicToneMapping
-    // If using postprocessing, use ToneMappingMode.ACES_FILMIC
-    gl.toneMapping = (ToneMappingMode?.ACES_FILMIC ?? 5) // fallback to 5 if undefined
-    gl.toneMappingExposure = 1.0
+
 
     const config: SSGIConfig = {
       importanceSampling: true,
@@ -69,14 +65,14 @@ export function Effects(): JSX.Element {
     const velocityDepthNormalPass = new VelocityDepthNormalPass(scene, camera)
     composer.addPass(renderPass)
     composer.addPass(velocityDepthNormalPass)
-    composer.addPass(new EffectPass(camera, new SSGIEffect(composer, scene, camera, { ...config, velocityDepthNormalPass })))
-    composer.addPass(new EffectPass(camera, new BloomEffect({ mipmapBlur: true, luminanceThreshold: 0.8, intensity: 0.1, levels: 10 })))
-    composer.addPass(new EffectPass(camera, new FXAAEffect()))
+    // composer.addPass(new EffectPass(camera, new SSGIEffect(composer, scene, camera, { ...config, velocityDepthNormalPass })))
+    // composer.addPass(new EffectPass(camera, new BloomEffect({ mipmapBlur: true, luminanceThreshold: 0.8, intensity: 0.1, levels: 10 })))
+    // composer.addPass(new EffectPass(camera, new FXAAEffect()))
 
     return () => {
       composer.removeAllPasses()
     }
-  }, [composer, camera, scene, gl])
+  }, [composer, camera, scene])
 
   useFrame((_, delta: number) => {
     gl.autoClear = true

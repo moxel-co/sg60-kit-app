@@ -26,17 +26,16 @@ export default function App() {
 
   return (
     <>
-      {isPostEffectsEnabled && <Effects />}
       <DynamicCamera />
-      {/* <Environment
-        files={("./assets/common/latlong/jersey_1k.hdr")}
-        environmentRotation={[0, Math.PI * 5 , 0]}
-        backgroundRotation={[0, Math.PI * 5 , 0]}
-        intensity={0.5}
-      /> */}
       <Environment
         preset="apartment"
-        background={true} />
+        background={true}
+        ground={{
+          height: 15, // Height of the camera that was used to create the env map (Default: 15)
+          radius: 40, // Radius of the world. (Default 60)
+          scale: 50, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
+        }}
+        />
       <ContactShadows position={[0, shadowOffset, 0]} opacity={0.3} />
       <Jersey />
       {isShowcaseViewEnabled && <ShowcaseCamera />}

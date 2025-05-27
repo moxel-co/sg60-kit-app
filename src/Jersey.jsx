@@ -1,8 +1,9 @@
 import { useRef, useEffect, useState } from 'react' 
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { Text, OrbitControls, useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 import useVariant from './stores/useVariant.jsx'
+import LayeredMaterial from './components/LayeredMaterial.jsx'
 
 import { 
   BodyColorSwatches,
@@ -34,6 +35,7 @@ export function Jersey(props) {
   const pickGuardColorState = useVariant((state) => state.pickGuardColor);
   const hardwareColorState = useVariant((state) => state.hardwareColor);
   const strummerSideColorState = useVariant((state) => state.strummerSideColor);
+  const poseState = useVariant((state) => state.pose);
 
 
   // Color library
@@ -51,8 +53,8 @@ export function Jersey(props) {
 
 
   // Define textures
-  const t_color = useTexture(`./assets/${asset_name}/color.png`);
-  const t_normal = useTexture(`./assets/${asset_name}/normal.png`);
+  const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
+  const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
   t_normal.repeat = new THREE.Vector2(1, 1);
@@ -63,10 +65,13 @@ export function Jersey(props) {
   const m_jersyMat = new THREE.MeshStandardMaterial({map: t_color, roughness: 0.7, normalMap: t_normal, normalScale: new THREE.Vector2(0.3, 0.3)})
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
   const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
+  const m_jerseyLayered = LayeredMaterial
+
+
 
 // Create a mapping between material names and material objects
   const materialMapping = {
-    '_jersey_': m_jersyMat,
+    '_jersey_': m_jerseyLayered,
     '_shorts_': m_grey,
     '_socks_': m_grey,
     '_body_': m_body,
@@ -83,7 +88,7 @@ export function Jersey(props) {
 
   return (
     <group {...props} dispose={null}>
-      <group name='default' visible={false}>
+      <group name='default' visible={poseState === 'default'}>
         <mesh
           castShadow
           receiveShadow
@@ -103,7 +108,7 @@ export function Jersey(props) {
           material={nodes.default_socks_geo.material}
         />
       </group>
-      <group name='poseA' visible={true}>
+      <group name='poseA' visible={poseState === 'poseA'}>
         <mesh
           castShadow
           receiveShadow
@@ -129,7 +134,7 @@ export function Jersey(props) {
           material={nodes.poseA_socks_geo.material}
         />
       </group>
-      <group name='poseB' visible={false}>
+      <group name='poseB' visible={poseState === 'poseB'}>
         <mesh
           castShadow
           receiveShadow
@@ -155,7 +160,7 @@ export function Jersey(props) {
           material={nodes.poseB_socks_geo.material}
         />
       </group>
-      <group name='poseC' visible={false}>
+      <group name='poseC' visible={poseState === 'poseC'} >
         <mesh
           castShadow
           receiveShadow

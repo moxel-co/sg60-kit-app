@@ -25,13 +25,7 @@ export default create((set, get) => ({
     shadowOffset: 0,
     isDualNeck: false,
     offsetPos: [0, 0],
-    neckOffsetPosLeft: [0, 0, 0],
-    neckOffsetRotLeft: [0, 0, 0],
-    dualNeckOffsetPos: [0, 0, 0],
-    dualNeckOffsetRot: [0, 0, 0],
-    dualNeckOffsetPosLeft: [0, 0, 0],
-    dualNeckOffsetRotLeft: [0, 0, 0],
-    isLeftHandOrientation: false,
+    pose: 'poseC',
 
     // Settings state
     isRotationEnabled: false,
