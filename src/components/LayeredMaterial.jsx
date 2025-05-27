@@ -4,7 +4,8 @@ import { TextureLoader } from 'three';
 import { useMemo } from 'react';
 
 const LayeredMaterial = ({ texture }) => {
-    // Load the texture inside the component
+    const normalMap = useLoader(TextureLoader, '/assets/prpJersey/normal.png');
+    normalMap.flipY = false; // Ensure the normal map is flipped correctly
     texture.flipY = false; // Ensure the texture is flipped correctly
     
     // Use useMemo to avoid recreating material on every render
@@ -14,6 +15,8 @@ const LayeredMaterial = ({ texture }) => {
             map: texture, // Set the texture as the base map - this ensures UV setup
             roughness: 0.5,
             metalness: 0.0,
+            normalMap: normalMap,
+            normalScale: new THREE.Vector2(0.5, 0.5),
         });
         
         // Apply shader modifications
