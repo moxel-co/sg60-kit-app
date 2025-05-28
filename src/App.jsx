@@ -37,12 +37,12 @@ export default function App() {
         }}
         /> */}
         <Environment
-        preset="studio"
+        files={'./assets/common/latlong/stadium_1k.exr'}
         background={true}
         ground={{
-          height: 15, // Height of the camera that was used to create the env map (Default: 15)
-          radius: 40, // Radius of the world. (Default 60)
-          scale: 50, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
+          height: 10, // Height of the camera that was used to create the env map (Default: 15)
+          radius: 100, // Radius of the world. (Default 60)
+          scale: 200, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
         }}
         />
       <ContactShadows position={[0, shadowOffset, 0]} opacity={0.3} />
