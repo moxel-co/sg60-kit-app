@@ -18,17 +18,7 @@ import {
 } from './icons.tsx';
 import { MenuItem } from '../types';
 import { 
-  BodyColorSwatches,
-  NeckColorSwatches,
-  HeadstockColorSwatches,
-  PickGuardColorSwatches,
-  InlayColorSwatches,
-  HardwareColorSwatches,
-  NeckButtonColorSwatches,
-  ArcadeButtonColorSwatches,
-  FretboardColorSwatches,
-  NeckBindingColorSwatches,
-  StrummerSideColorSwatches
+  ColorSwatches,
 } from './colors';
 import useVariant from '../stores/useVariant';
 import { jerseyVariants } from './jersey.ts';
@@ -105,8 +95,6 @@ const InlayColorIcon = () => {
 };
 
 const NeckButtonColorIcon = () => {
-  const neckButtonColorState = useVariant((state) => state.neckButtonColor);
-  const neckButtonColor = NeckButtonColorSwatches.find((color) => color.name === neckButtonColorState);
   return <NeckButtonsIcon size={56} color={"white"} />;
 };
 
@@ -206,78 +194,8 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
           icon: <BodyColorIcon />,
           label: 'Body',
           isColorPicker: true,
-          swatches: BodyColorSwatches,
+          swatches: ColorSwatches,
           onColorSelect: (color: string) => handleColorSelect('Body', color),
-        },
-        {
-          icon: <NeckColorIcon />,
-          label: 'Neck',
-          isColorPicker: true,
-          swatches: NeckColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Neck', color),
-        },
-        {
-          icon: <HeadstockColorIcon />,
-          label: 'Headstock',
-          isColorPicker: true,
-          swatches: HeadstockColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Headstock', color),
-        },
-        {
-          icon: <FretboardColorIcon />,
-          label: 'Fretboard',
-          isColorPicker: true,
-          swatches: FretboardColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Fretboard', color),
-        },
-        {
-          icon: <NeckBindingColorIcon />,
-          label: 'Neck Binding',
-          isColorPicker: true,
-          swatches: NeckBindingColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Neck Binding', color),
-        },
-        {
-          icon: <InlayColorIcon />,
-          label: 'Inlay',
-          isColorPicker: true,
-          swatches: InlayColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Inlay', color),
-        },
-        {
-          icon: <NeckButtonColorIcon />,
-          label: 'Neck Buttons',
-          isColorPicker: true,
-          swatches: NeckButtonColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Neck Buttons', color),
-        },
-        {
-          icon: <ArcadeButtonsColorIcon />,
-          label: 'Arcade Buttons',
-          isColorPicker: true,
-          swatches: ArcadeButtonColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Arcade Buttons', color),
-        },
-        {
-          icon: <PickGuardColorIcon />,
-          label: 'Pick Guard',
-          isColorPicker: true,
-          swatches: PickGuardColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Pick Guard', color),
-        },
-        {
-          icon: <HardwareColorIcon />,
-          label: 'Hardware',
-          isColorPicker: true,
-          swatches: HardwareColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Hardware', color),
-        },
-        {
-          icon: <StrummerSideColorIcon />,
-          label: 'Strummer Side Panels',
-          isColorPicker: true,
-          swatches: StrummerSideColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Strummer Side Panels', color),
         },
       ],
     },

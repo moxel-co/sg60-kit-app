@@ -27,8 +27,17 @@ export default function App() {
   return (
     <>
       <DynamicCamera />
-      <Environment
+      {/* <Environment
         preset="apartment"
+        background={true}
+        ground={{
+          height: 15, // Height of the camera that was used to create the env map (Default: 15)
+          radius: 40, // Radius of the world. (Default 60)
+          scale: 50, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
+        }}
+        /> */}
+        <Environment
+        preset="studio"
         background={true}
         ground={{
           height: 15, // Height of the camera that was used to create the env map (Default: 15)

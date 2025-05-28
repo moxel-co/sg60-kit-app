@@ -5,6 +5,7 @@ export interface ColorSwatch {
   secondary_color?: string;
   name: string;
   metalness?: number;
+  roughness?: number;
 }
 
 export interface JerseyVariant {

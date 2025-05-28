@@ -6,17 +6,7 @@ import useVariant from './stores/useVariant.jsx'
 import LayeredMaterial from './components/LayeredMaterial.jsx'
 
 import { 
-  BodyColorSwatches,
-  NeckColorSwatches,
-  HeadstockColorSwatches,
-  PickGuardColorSwatches,
-  InlayColorSwatches,
-  HardwareColorSwatches,
-  NeckButtonColorSwatches,
-  ArcadeButtonColorSwatches,
-  FretboardColorSwatches,
-  NeckBindingColorSwatches,
-  StrummerSideColorSwatches
+  ColorSwatches
 } from './data/colors.ts';
 
 const asset_name = 'prpJersey'
@@ -40,17 +30,7 @@ export function Jersey(props) {
 
 
   // Color library
-  const bodyColor = BodyColorSwatches.find((color) => color.name === bodyColorState);
-  const arcadeButtonColor = ArcadeButtonColorSwatches.find((color) => color.name === arcadeButtonColorState);
-  const neckButtonColor = NeckButtonColorSwatches.find((color) => color.name === neckButtonColorState);
-  const neckColor = NeckColorSwatches.find((color) => color.name === neckColorState);
-  const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
-  const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
-  const fretBoardColor = FretboardColorSwatches.find((color) => color.name === fretBoardColorState);
-  const fretBoardBindingColor = NeckBindingColorSwatches.find((color) => color.name === fretBoardBindingColorState);
-  const pickGuardColor = PickGuardColorSwatches.find((color) => color.name === pickGuardColorState);
-  const hardwareColor = HardwareColorSwatches.find((color) => color.name === hardwareColorState);
-  const strummerSideColor = StrummerSideColorSwatches.find((color) => color.name === strummerSideColorState);
+  const bodyColor = ColorSwatches.find((color) => color.name === bodyColorState);
 
 
   // Define textures
