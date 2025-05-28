@@ -193,5 +193,5 @@ export function Jersey(props) {
 }
 
 useGLTF.preload(`./assets/${asset_name}/model.glb`)
-useTexture.preload("./assets/${asset_name}/base-design-1.png")
-useTexture.preload("./assets/${asset_name}/base-design-2.png")
+useTexture.preload(`./assets/${asset_name}/base-design-1.png`)
+useTexture.preload(`./assets/${asset_name}/base-design-2.png`)
