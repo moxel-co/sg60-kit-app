@@ -70,27 +70,27 @@ export const jerseyVariants: JerseyVariant[] = [
 
     // Inlay Variants
     {
-        id: 'monogram_merlion',
+        id: 'motif_merlion',
         name: 'Merlion scale',
-        type: 'monogram',
+        type: 'motif',
         icon: InlayBirdIcon,
     },
     {
-        id: 'monogram_stars',
+        id: 'motif_stars',
         name: 'Stars',
-        type: 'monogram',
+        type: 'motif',
         icon: InlayBlockIcon,
     },
     {
-        id: 'monogram_singlish',
+        id: 'motif_singlish',
         name: 'Singlish',
-        type: 'monogram',
+        type: 'motif',
         icon: InlayClassicdotIcon,
     },
     {
-        id: 'monogram_peranakan',
+        id: 'motif_peranakan',
         name: 'Peranakan',
-        type: 'monogram',
+        type: 'motif',
         icon: InlayCloudIcon,
     },
 ];

@@ -10,7 +10,7 @@ export interface ColorSwatch {
 export interface JerseyVariant {
   id: string;
   name: string;
-  type: 'base' | 'graphics' | 'monogram';
+  type: 'base' | 'graphics' | 'motif';
   icon: ReactNode;
   texture: string;
   shadowOffset: number;

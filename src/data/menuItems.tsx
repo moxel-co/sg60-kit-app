@@ -39,54 +39,30 @@ import { ReactNode, useMemo } from 'react';
 // Get current selected variants
 const baseVariants = jerseyVariants.filter((variant) => variant.type === 'base');
 const graphicsVariants = jerseyVariants.filter((variant) => variant.type === 'graphics');
-const monogramVariants = jerseyVariants.filter((variant) => variant.type === 'monogram');
+const motifVariants = jerseyVariants.filter((variant) => variant.type === 'motif');
 const jerseyPresetVariants = jerseyPresets.filter((variant) => variant.type === 'preset');
 
 
 // Dynamic icons for menu items based on selected variant
 const HeadstockIcon = () => {
   const headstock = useVariant((state) => state.headstock);
-  const headstockColorState = useVariant((state) => state.headstockColor);
-  const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
   const variant = jerseyVariants.find(v => v.id === `${headstock}`);
   const IconComponent = variant?.icon || HeadStockReliableIcon;
-  return <IconComponent size={56} color={headstockColor.color} />;
-};
-
-const HeadstockIcon2 = () => {
-  const headstock = useVariant((state) => state.headstock2);
-  const headstockColorState = useVariant((state) => state.headstockColor);
-  const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
-  const variant = jerseyVariants.find(v => v.id === `${headstock}`);
-  const IconComponent = variant?.icon || HeadStockReliableIcon;
-  return <IconComponent size={56} color={headstockColor.color} />;
+  return <IconComponent size={56} color={"white"} />;
 };
 
 const BodyIcon = () => {
   const body = useVariant((state) => state.body);
-  const bodyColorState = useVariant((state) => state.bodyColor);
-  const bodyColor = BodyColorSwatches.find((color) => color.name === bodyColorState);
   const variant = jerseyVariants.find(v => v.id === `${body}`);
   const IconComponent = variant?.icon || BodyReliableIcon;
-  return <IconComponent size={56} color={bodyColor.color} />;
+  return <IconComponent size={56} color={"white"} />;
 };
 
 const InlayIcon = () => {
   const inlay = useVariant((state) => state.inlay);
-  const inlayColorState = useVariant((state) => state.inlayColor);
-  const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
   const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
-  return <IconComponent size={56} color={inlayColor.color} />;
-};
-
-const InlayIcon2 = () => {
-  const inlay = useVariant((state) => state.inlay2);
-  const inlayColorState = useVariant((state) => state.inlayColor);
-  const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
-  const variant = jerseyVariants.find(v => v.id === `${inlay}`);
-  const IconComponent = variant?.icon || InlaySharkfinIcon;
-  return <IconComponent size={56} color={inlayColor.color} />;
+  return <IconComponent size={56} color={"white"} />;
 };
 
 const updateDynamicCamera = (targetType: string) => {
@@ -97,89 +73,65 @@ const updateDynamicCamera = (targetType: string) => {
 
 const BodyColorIcon = () => {
   const body = useVariant((state) => state.body);
-  const bodyColorState = useVariant((state) => state.bodyColor);
-  const bodyColor = BodyColorSwatches.find((color) => color.name === bodyColorState);
   const variant = jerseyVariants.find(v => v.id === `${body}`);
   const IconComponent = variant?.icon || BodyReliableIcon;
-  return <IconComponent size={56} color={bodyColor.color} />;
+  return <IconComponent size={56} color={"white"} />;
 };
 
 const NeckColorIcon = () => {
-  const neckColorState = useVariant((state) => state.neckColor);
-  const neckColor = NeckColorSwatches.find((color) => color.name === neckColorState);
-  return <NeckIcon size={56} color={neckColor.color} />;
+  return <NeckIcon size={56} color={"white"} />;
 };
 
 const HeadstockColorIcon = () => {
   const headstock = useVariant((state) => state.headstock);
-  const headstockColorState = useVariant((state) => state.headstockColor);
-  const headstockColor = HeadstockColorSwatches.find((color) => color.name === headstockColorState);
   const variant = jerseyVariants.find(v => v.id === `${headstock}`);
-  const IconComponent = variant?.icon || HeadStockArrowIcon;
-  return <IconComponent size={56} color={headstockColor.color} />;
+  const IconComponent = variant?.icon || InlaySharkfinIcon;
+  return <IconComponent size={56} color={"white"} />;
 }
 
 const FretboardColorIcon = () => {
-  const fretBoardColorState = useVariant((state) => state.fretBoardColor);
-  const fretBoardColor = FretboardColorSwatches.find((color) => color.name === fretBoardColorState);
-  return <FretboardIcon size={56} color={fretBoardColor.color} />;
+  return <FretboardIcon size={56} color={"white"} />;
 };
 
 const NeckBindingColorIcon = () => {
-  const color = useVariant((state) => state.fretBoardBindingColor);
-  return <FretboardBindingIcon size={56} color={color} />;
+  return <FretboardBindingIcon size={56} color={"white"} />;
 };
 
 const InlayColorIcon = () => {
   const inlay = useVariant((state) => state.inlay);
-  const inlayColorState = useVariant((state) => state.inlayColor);
-  const inlayColor = InlayColorSwatches.find((color) => color.name === inlayColorState);
   const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
-  return <IconComponent size={56} color={inlayColor.color} />;
+  return <IconComponent size={56} color={"white"} />;
 };
 
 const NeckButtonColorIcon = () => {
   const neckButtonColorState = useVariant((state) => state.neckButtonColor);
   const neckButtonColor = NeckButtonColorSwatches.find((color) => color.name === neckButtonColorState);
-  return <NeckButtonsIcon size={56} color={neckButtonColor.color} />;
+  return <NeckButtonsIcon size={56} color={"white"} />;
 };
 
 const ArcadeButtonsColorIcon = () => {
-  const arcadeButtonColorState = useVariant((state) => state.arcadeButtonColor);
-  const arcadeButtonColor = ArcadeButtonColorSwatches.find((color) => color.name === arcadeButtonColorState);
-  return <Joystick size={56} color={arcadeButtonColor.color} />;
+  return <Joystick size={56} color={"white"} />;
 };
 
 const PickGuardColorIcon = () => {
-  const pickGuardColorState = useVariant((state) => state.pickGuardColor);
-  const pickGuardColor = PickGuardColorSwatches.find((color) => color.name === pickGuardColorState);
-  return <PickGuardIcon size={56} color={pickGuardColor.color} />;
+  return <PickGuardIcon size={56} color={"white"} />;
 };
 
 const HardwareColorIcon = () => {
-  const hardwareColorState = useVariant((state) => state.hardwareColor);
-  const hardwareColor = HardwareColorSwatches.find((color) => color.name === hardwareColorState);
-  return <HardwareIcon size={56} color={hardwareColor.color} />;
+  return <HardwareIcon size={56} color={"white"} />;
 };
 
 const StrummerSideColorIcon = () => {
-  const strummerSideColorState = useVariant((state) => state.strummerSideColor);
-  const strummerSideColor = StrummerSideColorSwatches.find((color) => color.name === strummerSideColorState);
-  return <StrummerSideIcon size={56} color={strummerSideColor.color} />;
+  return <StrummerSideIcon size={56} color={"white"} />;
 };
 
 // Create a custom hook that returns the customiseMenuItems array
 export const useCustomiseMenuItems = (): MenuItem[] => {
   const preset = useVariant((state) => state.preset);
-  const isDualNeck = useVariant((state) => state.isDualNeck);
-  const body = useVariant((state) => state.body);
-  const headstock = useVariant((state) => state.headstock);
-  const headstock2 = useVariant((state) => state.headstock2);
-  const inlay = useVariant((state) => state.inlay);
-  const inlay2 = useVariant((state) => state.inlay2);
-  const starPowerButton = useVariant((state) => state.starPowerButton);
-  const isLeftHandOrientation = useVariant((state) => state.isLeftHandOrientation);
+  const base = useVariant((state) => state.base);
+  const graphics = useVariant((state) => state.graphics);
+  const motif = useVariant((state) => state.motif);
 
   return useMemo(() => [
     {
@@ -191,37 +143,15 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
         onClick: () => {
           useVariant.setState({
             preset: variant.id,
-            body: variant.body,
-            headstock: variant.headstock,
-            headstock2: variant.headstock2,
-            inlay: variant.inlay,
-            inlay2: variant.inlay2,
-            starPowerButton: variant.starPowerButton,
-            bodyColor: variant.bodyColor,
-            neckColor: variant.neckColor,
-            headstockColor: variant.headstockColor,
-            fretBoardColor: variant.fretBoardColor,
-            fretBoardBindingColor: variant.fretBoardBindingColor,
-            pickGuardColor: variant.pickGuardColor,
-            hardwareColor: variant.hardwareColor,
-            inlayColor: variant.inlayColor,
-            neckButtonColor: variant.neckButtonColor,
-            arcadeButtonColor: variant.arcadeButtonColor,
-            strummerSideColor: variant.strummerSideColor,
-            isDualNeck: variant.isDualNeck,
-            strummerOffset: variant.strummerOffset,
+            base: variant.body,
+            graphics: variant.headstock,
+            motif: variant.inlay,
             shadowOffset: variant.shadowOffset,
             offsetPos: variant.offsetPos,
-            neckOffsetPosLeft: variant.neckOffsetPosLeft,
-            neckOffsetRotLeft: variant.neckOffsetRotLeft,
-            dualNeckOffsetPos: variant.dualNeckOffsetPos,
-            dualNeckOffsetRot: variant.dualNeckOffsetRot,
-            dualNeckOffsetPosLeft: variant.dualNeckOffsetPosLeft,
-            dualNeckOffsetRotLeft: variant.dualNeckOffsetRotLeft,
           });
           updateDynamicCamera("default");
         },
-        isActive: body === variant.id,
+        isActive: base === variant.id,
       })),
     },
     {
@@ -232,14 +162,14 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
         label: variant.name,
         onClick: () => {
           useVariant.setState({
-            body: variant.id,
+            base: variant.id,
             texture: variant.texture,
             shadowOffset: variant.shadowOffset,
             offsetPos: variant.offsetPos,
           });
           updateDynamicCamera(variant.type);
         },
-        isActive: body === variant.id,
+        isActive: base === variant.id,
       })),
     },
     {
@@ -249,23 +179,23 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {
-          useVariant.setState({ headstock: variant.id });
+          useVariant.setState({ graphics: variant.id });
           updateDynamicCamera(variant.type);
         },
-        isActive: headstock === variant.id,
+        isActive: graphics === variant.id,
       })),
     },
     {
       icon: <InlayIcon /> as ReactNode,
-      label: 'Monogram',
-      items: monogramVariants.map((variant) => ({
+      label: 'Motif',
+      items: motifVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
         onClick: () => {
-          useVariant.setState({ inlay: variant.id });
+          useVariant.setState({ motif: variant.id });
           updateDynamicCamera(variant.type);
         },
-        isActive: inlay === variant.id,
+        isActive: motif === variant.id,
       })),
     },
     {
@@ -351,5 +281,5 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
         },
       ],
     },
-  ], [preset, isDualNeck, body, headstock, headstock2, inlay, inlay2, starPowerButton, isLeftHandOrientation]);
+  ], [preset, base, graphics, motif]);
 };

@@ -33,9 +33,13 @@ const Moxel = () => {
             size={12}
             onClick={() => openLink('https://instagram.com/moxelco')}
           />
-          <div
+          <img
+            src={TiktokIcon}
+            alt="TikTok"
             className="social-icon tiktok-icon"
             onClick={() => openLink('https://tiktok.com/@moxelco')}
+            width="12"
+            height="12"
           />
         </div>
       </div>
