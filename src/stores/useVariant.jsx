@@ -6,6 +6,8 @@ export default create((set, get) => ({
     base: 'base_design_1',
     texture: 'base-design-1',
     motif: 'motif_merlion',
+    jerseyName: 'CALLEN',
+    jerseyNumber: '10',
     shadowOffset: 0,
     offsetPos: [0, 0],
     pose: 'poseC',

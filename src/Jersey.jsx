@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react' 
 import { useFrame, useLoader } from '@react-three/fiber'
-import { Text, OrbitControls, useGLTF, useTexture } from '@react-three/drei'
+import { Text, PerspectiveCamera, useGLTF, useTexture, Decal, RenderTexture } from '@react-three/drei'
 import * as THREE from 'three'
 import useVariant from './stores/useVariant.jsx'
 import LayeredMaterial from './components/LayeredMaterial.jsx'
@@ -27,6 +27,10 @@ export function Jersey(props) {
   const strummerSideColorState = useVariant((state) => state.strummerSideColor);
   const poseState = useVariant((state) => state.pose);
   const textureState = useVariant((state) => state.texture);
+  const jerseyNameState = useVariant((state) => state.jerseyName);
+  const jerseyNumberState = useVariant((state) => state.jerseyNumber);
+
+  const jerseyRef = useRef()
 
 
   // Color library
@@ -67,6 +71,25 @@ export function Jersey(props) {
       }
     })
   })
+
+  const NumberDecal = ({ meshRef, position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
+
+    return (
+      <Decal position={[-0.1, 7.7, -0.7]} rotation={[Math.PI*0.9,  Math.PI*-0.02, Math.PI*0.99]} scale={[2, 2, 1]} mesh={jerseyRef}>
+              <meshStandardMaterial polygonOffset polygonOffsetFactor={-1} transparent>
+                <RenderTexture attach="map">
+                  <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} rotation={[0,0,0]} />
+                  <Text position={[0,4,0]} fontSize={1} color="red">
+                    {jerseyNameState}
+                  </Text>
+                  <Text fontSize={6} color="red">
+                    {jerseyNumberState}
+                  </Text>
+                </RenderTexture>
+              </meshStandardMaterial>
+            </Decal>
+    );
+  };
 
   return (
     <group {...props} dispose={null}>
@@ -154,7 +177,9 @@ export function Jersey(props) {
           receiveShadow
           geometry={nodes.poseC_jersey_geo.geometry}
           material={nodes.poseC_jersey_geo.material}
+          ref = {jerseyRef}
         />
+        <NumberDecal/>
         <mesh
           castShadow
           receiveShadow
