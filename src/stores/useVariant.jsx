@@ -6,8 +6,8 @@ export default create((set, get) => ({
     base: 'base_design_1',
     texture: 'base-design-1',
     motif: 'motif_merlion',
-    jerseyName: 'CALLEN',
-    jerseyNumber: '10',
+    jerseyName: 'SG',
+    jerseyNumber: '60',
     shadowOffset: 0,
     offsetPos: [0, 0],
     pose: 'poseC',
@@ -25,6 +25,9 @@ export default create((set, get) => ({
     targetCameraPosition: [0, 8, 10],
     cameraTarget: [0, 8, 0],
     targetCameraTarget: [0, 8, 0],
+
+    // UI
+    isUiHidden: false,
 
     // Light Boxes
     isOrderLightBoxOpen: false,

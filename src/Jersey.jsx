@@ -52,6 +52,7 @@ export function Jersey(props) {
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
   const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
   const m_jerseyLayered = LayeredMaterial({texture})
+  const m_text = new THREE.MeshBasicMaterial({ map: t_color })
 
 
 
@@ -76,13 +77,15 @@ export function Jersey(props) {
 
     return (
       <Decal position={[-0.1, 7.7, -0.7]} rotation={[Math.PI*0.9,  Math.PI*-0.02, Math.PI*0.99]} scale={[2, 2, 1]} mesh={jerseyRef}>
-              <meshStandardMaterial polygonOffset polygonOffsetFactor={-1} transparent>
+              <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-1}>
                 <RenderTexture attach="map">
                   <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} rotation={[0,0,0]} />
-                  <Text position={[0,4,0]} fontSize={1} color="red">
+                  <ambientLight intensity={Math.PI} />
+                  <directionalLight position={[10, 10, 5]} />
+                  <Text position={[0,4,0]} fontSize={1} material={m_text}>
                     {jerseyNameState}
                   </Text>
-                  <Text fontSize={6} color="red">
+                  <Text fontSize={6} material={m_text}>
                     {jerseyNumberState}
                   </Text>
                 </RenderTexture>

@@ -4,7 +4,7 @@
 }
 
 .menu-items-container {
-  @apply space-y-1 p-3 mr-3 md:mr-4 md:space-y-2 md:p-0 4xl:mr-6 4xl:space-y-3;
+  @apply space-y-0 p-3 mr-3 md:mr-4 md:space-y-0 md:p-0 4xl:mr-6 4xl:space-y-0;
 }
 
 /* Menu button styles */
@@ -12,8 +12,8 @@
   @apply relative flex items-center justify-center 
          w-[2.3rem] h-[2.3rem] /* 50% larger for mobile */
          md:w-[2.19rem] md:h-[2.19rem] 2xl:w-[3.06rem] 2xl:h-[3.06rem] 
-         4xl:w-[4.9rem] 4xl:h-[4.9rem] rounded-full transition-all duration-200 
-         text-white cursor-pointer bg-white/5;
+         4xl:w-[4.9rem] 4xl:h-[4.9rem] transition-all duration-200 
+         text-white cursor-pointer bg-white/5 border-[0.5px] border-white/50; /* Reduced border thickness */
 }
 
 .menu-button:not(.cart-button) {
@@ -43,7 +43,7 @@
 }
 
 .menu-button-background {
-  @apply absolute inset-0 rounded-full;
+  @apply absolute inset-0; /* Removed rounded-full */
 }
 
 .menu-button-text {
@@ -73,14 +73,14 @@
   @apply bg-yellow-400;
 }
 
-/* Submenu styles */
+/* Submenu container */
 .submenu-container {
   @apply absolute right-full top-0 mr-1 md:mr-1.5 
-         2xl:mr-2 4xl:mr-6 animate-slide-left z-[50] bg-black bg-opacity-80 p-2 rounded-lg;
+         2xl:mr-2 4xl:mr-6 animate-slide-left z-[50] bg-black bg-opacity-80 rounded-lg space-y-0; /* Reduced vertical spacing */
 }
 
 .submenu-container.grid-layout {
-  @apply grid grid-cols-3 gap-2 md:gap-3 2xl:gap-4 4xl:gap-6;
+  @apply grid grid-cols-3 gap-0 md:gap-0 2xl:gap-0 4xl:gap-0; /* Reduced horizontal spacing */
   width: max-content;
 }
 
@@ -92,15 +92,17 @@
   @apply opacity-0 pointer-events-none;
 }
 
+/* Submenu labels */
 .submenu-label,
 .option-item-label {
   @apply invisible absolute -top-3 md:-top-4 2xl:-top-6 4xl:-top-8 
          left-1/2 transform -translate-x-1/2 whitespace-nowrap text-white 
-         text-[7.2px] md:text-[11px] 2xl:text-xs 4xl:text-base font-medium 
+         text-[6px] md:text-[9px] 2xl:text-[10px] 4xl:text-[12px] font-normal 
          bg-gray-900/90 rounded px-1 py-0.5 opacity-0 transition-all duration-200 
-         select-none pointer-events-none;
+         select-none pointer-events-none; /* Reduced font size */
 }
 
+/* Hover styles for labels */
 .submenu-item:hover .submenu-label,
 .option-item:hover .option-item-label {
   @apply visible opacity-100 z-50;
@@ -110,8 +112,8 @@
 .submenu-button {
   @apply relative w-[2.3rem] h-[2.3rem] md:w-[2.19rem] md:h-[2.19rem] 
          2xl:w-[3.06rem] 2xl:h-[3.06rem] 4xl:w-[4.9rem] 4xl:h-[4.9rem] 
-         rounded-full transition-all duration-200 bg-white/30 flex items-center 
-         justify-center text-white hover:bg-[#0c3d64] hover:opacity-90 cursor-pointer z-10;
+         transition-all duration-200 bg-white/30 flex items-center 
+         justify-center text-white hover:bg-[#0c3d64] hover:opacity-90 cursor-pointer z-10 border-[0.5px] border-white/50; /* Reduced border thickness */
 }
 
 .submenu-button.hidden-button {
@@ -125,7 +127,7 @@
 /* Custom submenu styles */
 .custom-submenu {
   @apply absolute right-full top-[50%] -translate-y-[50%] mr-1 md:mr-1.5 2xl:mr-2 4xl:mr-6 
-         space-y-1 md:space-y-2 2xl:space-y-3 4xl:space-y-8;
+         space-x-0 md:space-x-0 2xl:space-x-0 4xl:space-x-0; /* Reduced horizontal spacing */
 }
 
 /* Toggle button states */
@@ -146,8 +148,8 @@
 .option-item {
   @apply relative w-[2.3rem] h-[2.3rem] md:w-[2.19rem] md:h-[2.19rem] 
          2xl:w-[3.06rem] 2xl:h-[3.06rem] 4xl:w-[4.9rem] 4xl:h-[4.9rem] 
-         rounded-full transition-all duration-200 flex items-center justify-center 
-         text-white bg-white/20 hover:bg-[#0c3d64]/20 hover:opacity-90 cursor-pointer z-10;
+         transition-all duration-200 flex items-center justify-center 
+         text-white bg-white/20 hover:bg-[#0c3d64]/20 hover:opacity-90 cursor-pointer z-10 border-[0.5px] border-white/50; /* Reduced border thickness */
 }
 
 /* Mobile optimizations */
@@ -160,3 +162,4 @@
     @apply grid-cols-2 gap-2;
   }
 }
+

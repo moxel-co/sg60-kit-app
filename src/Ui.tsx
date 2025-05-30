@@ -491,7 +491,7 @@ function Ui() {
             setActiveSubMenuId={setActiveSubMenuId}
           />
         ))}
-        <AddToCartButton />
+        {/* <AddToCartButton /> */}
       </div>
     </div>
   );
