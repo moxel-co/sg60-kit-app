@@ -31,6 +31,7 @@ const baseVariants = jerseyVariants.filter((variant) => variant.type === 'base')
 const graphicsVariants = jerseyVariants.filter((variant) => variant.type === 'graphics');
 const motifVariants = jerseyVariants.filter((variant) => variant.type === 'motif');
 const jerseyPresetVariants = jerseyPresets.filter((variant) => variant.type === 'preset');
+const colorVariants = ColorSwatches.filter((variant) => variant.type === 'color');
 
 // Dynamic icons for menu items based on selected variant
 const HeadstockIcon = () => {
@@ -71,6 +72,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
   const base = useVariant((state) => state.base);
   const graphics = useVariant((state) => state.graphics);
   const motif = useVariant((state) => state.motif);
+  const color = useVariant((state) => state.color);
   const setIsNameNumberLightBoxOpen = useVariant((state) => state.setIsNameNumberLightBoxOpen);
 
   return useMemo(() => [
@@ -154,9 +156,14 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
     {
       icon: <Palette size={56} />,
       label: 'Colors',
-      isColorPicker: true,
-      swatches: ColorSwatches,
-      onColorSelect: handleColorSelect,
+      items: colorVariants.map((variant) => ({
+        icon: <Palette size={56} />,
+        label: variant.name,
+        onClick: () => {
+          useVariant.setState({ color: variant.id });
+        },
+        isActive: color === variant.id,
+      })),
     },
   ], [preset, base, graphics, motif, setIsNameNumberLightBoxOpen]);
 };

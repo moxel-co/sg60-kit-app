@@ -5,28 +5,18 @@ import * as THREE from 'three'
 import useVariant from './stores/useVariant.jsx'
 import LayeredMaterial from './components/LayeredMaterial.jsx'
 
-import { 
-  ColorSwatches
-} from './data/colors.ts';
+import { ColorSwatches } from './data/colors.ts';
+import { jerseyVariants } from './data/jersey.ts';
 
 const asset_name = 'prpJersey'
 
 export function Jersey(props) {
   const { nodes, materials } = useGLTF(`./assets/${asset_name}/model.glb`)
 
-  const bodyColorState = useVariant((state) => state.bodyColor);
-  const headstockColorState = useVariant((state) => state.headstockColor);
-  const arcadeButtonColorState = useVariant((state) => state.arcadeButtonColor);
-  const neckButtonColorState = useVariant((state) => state.neckButtonColor);
-  const neckColorState = useVariant((state) => state.neckColor);
-  const inlayColorState = useVariant((state) => state.inlayColor);
-  const fretBoardColorState = useVariant((state) => state.fretBoardColor);
-  const fretBoardBindingColorState = useVariant((state) => state.fretBoardBindingColor);
-  const pickGuardColorState = useVariant((state) => state.pickGuardColor);
-  const hardwareColorState = useVariant((state) => state.hardwareColor);
-  const strummerSideColorState = useVariant((state) => state.strummerSideColor);
+  const colorState = useVariant((state) => state.color);
   const poseState = useVariant((state) => state.pose);
   const textureState = useVariant((state) => state.texture);
+  const motifState = useVariant((state) => state.motif);
   const jerseyNameState = useVariant((state) => state.jerseyName);
   const jerseyNumberState = useVariant((state) => state.jerseyNumber);
 
@@ -34,13 +24,15 @@ export function Jersey(props) {
 
 
   // Color library
-  const bodyColor = ColorSwatches.find((color) => color.name === bodyColorState);
+  const color = ColorSwatches.find((color) => color.id === colorState);
+  const motif = jerseyVariants.find((variant) => variant.id === motifState);
 
 
   // Define textures
   const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
   const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
   const texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${textureState}.png`);
+  const motifMap = useLoader(THREE.TextureLoader, `/assets/prpJersey/${motif.texture}.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
   t_normal.repeat = new THREE.Vector2(1, 1);
@@ -51,8 +43,13 @@ export function Jersey(props) {
   const m_jersyMat = new THREE.MeshStandardMaterial({map: t_color, roughness: 0.7, normalMap: t_normal, normalScale: new THREE.Vector2(0.3, 0.3)})
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
   const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
-  const m_jerseyLayered = LayeredMaterial({texture})
-  const m_text = new THREE.MeshBasicMaterial({ map: t_color })
+  const m_jerseyLayered = LayeredMaterial({
+    base_texture: texture,
+    motif_texture: motifMap,
+    primary_color: color.primary_color,
+    secondary_color: color.secondary_color
+  })
+  const m_text = new THREE.MeshBasicMaterial({ color: color.primary_color })
 
 
 
@@ -203,3 +200,7 @@ export function Jersey(props) {
 useGLTF.preload(`./assets/${asset_name}/model.glb`)
 useTexture.preload(`./assets/${asset_name}/base-design-1.png`)
 useTexture.preload(`./assets/${asset_name}/base-design-2.png`)
+useTexture.preload(`./assets/${asset_name}/motif-merlion.png`)
+useTexture.preload(`./assets/${asset_name}/motif-stars.png`)
+useTexture.preload(`./assets/${asset_name}/motif-singlish.png`)
+useTexture.preload(`./assets/${asset_name}/motif-peranakan.png`)

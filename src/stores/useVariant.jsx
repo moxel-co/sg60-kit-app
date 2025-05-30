@@ -8,6 +8,7 @@ export default create((set, get) => ({
     motif: 'motif_merlion',
     jerseyName: 'SG',
     jerseyNumber: '60',
+    color: 'color_home',
     shadowOffset: 0,
     offsetPos: [0, 0],
     pose: 'poseC',

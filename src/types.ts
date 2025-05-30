@@ -1,9 +1,12 @@
 import { ReactNode } from 'react';
 
 export interface ColorSwatch {
-  color: string;
+  primary_color: string;
   secondary_color?: string;
+  tertiary_color?: string;
   name: string;
+  type: string;
+  id: string;
   metalness?: number;
   roughness?: number;
 }

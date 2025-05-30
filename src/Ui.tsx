@@ -374,7 +374,7 @@ function Ui() {
       setIsUiHidden(false);
       timeoutRef.current = setTimeout(() => {
         setIsUiHidden(true);
-      }, 5000);
+      }, 4000);
     };
 
     const handleActivity = () => {

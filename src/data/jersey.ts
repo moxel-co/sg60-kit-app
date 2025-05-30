@@ -73,24 +73,28 @@ export const jerseyVariants: JerseyVariant[] = [
         id: 'motif_merlion',
         name: 'Merlion scale',
         type: 'motif',
+        texture: 'motif-merlion',
         icon: InlayBirdIcon,
     },
     {
         id: 'motif_stars',
         name: 'Stars',
         type: 'motif',
+        texture: 'motif-stars',
         icon: InlayBlockIcon,
     },
     {
         id: 'motif_singlish',
         name: 'Singlish',
         type: 'motif',
+        texture: 'motif-singlish',
         icon: InlayClassicdotIcon,
     },
     {
         id: 'motif_peranakan',
         name: 'Peranakan',
         type: 'motif',
+        texture: 'motif-peranakan',
         icon: InlayCloudIcon,
     },
 ];

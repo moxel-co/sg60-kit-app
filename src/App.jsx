@@ -27,16 +27,16 @@ export default function App() {
   return (
     <>
       <DynamicCamera />
-      {/* <Environment
-        preset="apartment"
+      <Environment
+        files={'./assets/common/latlong/studio_small_03_graded_1k.exr'}
         background={true}
         ground={{
           height: 15, // Height of the camera that was used to create the env map (Default: 15)
           radius: 40, // Radius of the world. (Default 60)
           scale: 50, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
         }}
-        /> */}
-        <Environment
+        />
+        {/* <Environment
         files={'./assets/common/latlong/stadium_1k.exr'}
         background={true}
         ground={{
@@ -44,7 +44,7 @@ export default function App() {
           radius: 100, // Radius of the world. (Default 60)
           scale: 200, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
         }}
-        />
+        /> */}
       <ContactShadows position={[0, shadowOffset, 0]} opacity={0.3} />
       <Jersey />
       {isShowcaseViewEnabled && <ShowcaseCamera />}

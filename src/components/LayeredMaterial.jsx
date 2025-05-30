@@ -3,65 +3,70 @@ import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import { useMemo } from 'react';
 
-const LayeredMaterial = ({ texture }) => {
+function hexToVec3(hex) {
+    const color = new THREE.Color(hex);
+    return [color.r, color.g, color.b];
+}
+
+const LayeredMaterial = ({
+    base_texture,
+    motif_texture,
+    primary_color = '#ff0000',
+    secondary_color = '#ffffff'
+}) => {
     const normalMap = useLoader(TextureLoader, '/assets/prpJersey/normal.png');
-    const normalMapScale = 0.5
-    normalMap.flipY = false; // Ensure the normal map is flipped correctly
-    texture.flipY = false; // Ensure the texture is flipped correctly
-    
-    // Use useMemo to avoid recreating material on every render
+    const normalMapScale = 0.5;
+    normalMap.flipY = false;
+    base_texture.flipY = false;
+    motif_texture.flipY = false;
+    motif_texture.wrapS = THREE.RepeatWrapping;
+    motif_texture.wrapT = THREE.RepeatWrapping;
+
+    const primaryVec3 = hexToVec3(primary_color);
+    const secondaryVec3 = hexToVec3(secondary_color);
+
     const material = useMemo(() => {
         const mat = new THREE.MeshStandardMaterial({
             color: 0xffffff,
-            map: texture, // Set the texture as the base map - this ensures UV setup
+            map: base_texture,
             roughness: 0.5,
             metalness: 0.0,
             normalMap: normalMap,
             normalScale: new THREE.Vector2(normalMapScale, normalMapScale),
         });
-        
-        // Apply shader modifications
+
         mat.onBeforeCompile = (shader) => {
-            // Add uniform for our custom texture
-            shader.uniforms.customTexture = { value: texture };
-            
-            // Add uniform declaration to fragment shader
+            shader.uniforms.baseTexture = { value: base_texture };
+            shader.uniforms.motifTexture = { value: motif_texture };
+            shader.uniforms.primary_color = { value: new THREE.Color(...primaryVec3) };
+            shader.uniforms.secondary_color = { value: new THREE.Color(...secondaryVec3) };
+
             shader.fragmentShader = `
-                uniform sampler2D customTexture;
+                uniform sampler2D baseTexture;
+                uniform sampler2D motifTexture;
+                uniform vec3 primary_color;
+                uniform vec3 secondary_color;
             ` + shader.fragmentShader;
-            
-            // Replace after the map fragment to override the texture
+
             shader.fragmentShader = shader.fragmentShader.replace(
                 '#include <map_fragment>',
                 `
                 #include <map_fragment>
-                
-                // Use custom texture as alpha map to blend two colors
                 #ifdef USE_MAP
-                    vec4 customTexColor = texture2D(customTexture, vMapUv);
-                    
-                    // Define the two colors to blend
-                    vec3 color1 = vec3(1.0, 0.0, 0.0); // Red #FF0000
-                    vec3 color2 = vec3(1.0, 1.0, 1.0); // White #FFFFFF
-                    
-                    // Use the texture's r channel as alpha for blending
-                    float alpha = customTexColor.r;
-                    
-                    // Blend the two colors based on the alpha
-                    vec3 blendedColor = mix(color1, color2, alpha);
-                    
-                    // Apply the blended color
+                    vec4 baseTexColor = texture2D(baseTexture, vMapUv);
+                    vec4 motifTexColor = texture2D(motifTexture, vMapUv * 40.0);
+                    float alpha = (step(0.5, (1.0 - baseTexColor.r))) * motifTexColor.r;
+                    vec3 blendedColor = mix(primary_color, secondary_color, (1.0 - alpha)*1.0);
                     diffuseColor.rgb = blendedColor;
                 #endif
                 `
             );
         };
-        
+
         return mat;
-    }, [texture]);
-    
+    }, [base_texture, primary_color, secondary_color, primaryVec3, secondaryVec3]);
+
     return material;
 };
-
 
 export default LayeredMaterial;
