@@ -1,59 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Settings, Rotate3d, Hammer, Eye, Sparkles, SwitchCamera, Camera } from 'lucide-react';
+import { Settings, Rotate3d, Hammer, Eye, Sparkles, SwitchCamera, Camera, Type } from 'lucide-react';
 import { useCustomiseMenuItems } from './data/menuItems';
 import { MenuItem } from './types';
 import { ColorSwatches } from './components/ColorSwatches';
 import useVariant from './stores/useVariant';
 import AddToCartButton from './components/AddToCart';
-
-const handleColorSelect = (colorType: string, color: string) => {
-  switch (colorType) {
-    case 'Body':
-      useVariant.setState({ bodyColor: color });
-      useVariant.setState({ targetType: 'body' });
-      break;
-    case 'Neck':
-      useVariant.setState({ neckColor: color });
-      useVariant.setState({ targetType: 'neck' });
-      break;
-    case 'Headstock':
-      useVariant.setState({ headstockColor: color });
-      useVariant.setState({ targetType: 'headstock' });
-      break;
-    case 'Fretboard':
-      useVariant.setState({ fretBoardColor: color });
-      useVariant.setState({ targetType: 'fretboard' });
-      break;
-    case 'Neck Binding':
-      useVariant.setState({ fretBoardBindingColor: color });
-      useVariant.setState({ targetType: 'neck' });
-      break;
-    case 'Inlay':
-      useVariant.setState({ inlayColor: color });
-      useVariant.setState({ targetType: 'inlay' });
-      break;
-    case 'Neck Buttons':
-      useVariant.setState({ neckButtonColor: color });
-      useVariant.setState({ targetType: 'neckButtons' });
-      break;
-    case 'Arcade Buttons':
-      useVariant.setState({ arcadeButtonColor: color });
-      useVariant.setState({ targetType: 'body' });
-      break;
-    case 'Pick Guard':
-      useVariant.setState({ pickGuardColor: color });
-      useVariant.setState({ targetType: 'body' });
-      break;
-    case 'Hardware':
-      useVariant.setState({ hardwareColor: color });
-      useVariant.setState({ targetType: 'default' });
-      break;
-    case 'Strummer Side Panels':
-      useVariant.setState({ strummerSideColor: color });
-      useVariant.setState({ targetType: 'body' });
-      break;
-  }
-};
 
 function SubMenuItem({ item, parentOpen, onSubMenuOpen, activeSubMenuId, setActiveSubMenuId }: { 
   item: MenuItem;
@@ -411,6 +362,39 @@ function Ui() {
   const [activeSubMenuId, setActiveSubMenuId] = useState<string | null>(null);
   const [anySubMenuOpen, setAnySubMenuOpen] = useState(false);
   const customiseMenuItems = useCustomiseMenuItems();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const setIsUiHidden = useVariant((state) => state.setIsUiHidden);
+  const isUiHidden = useVariant((state) => state.isUiHidden);
+
+  useEffect(() => {
+    const resetTimer = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      setIsUiHidden(false);
+      timeoutRef.current = setTimeout(() => {
+        setIsUiHidden(true);
+      }, 3000);
+    };
+
+    const handleMouseEvent = () => {
+      resetTimer();
+    };
+
+    document.addEventListener('mousedown', handleMouseEvent);
+    document.addEventListener('mouseup', handleMouseEvent);
+
+    // Initial timer
+    resetTimer();
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseEvent);
+      document.removeEventListener('mouseup', handleMouseEvent);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [setIsUiHidden]);
 
   const handleResetView = () => {
     useVariant.setState({ resetCamera: Math.random() });
@@ -474,7 +458,7 @@ function Ui() {
   ];
 
   return (
-    <div className="menu-container">
+    <div className="menu-container" data-hidden={isUiHidden}>
       <div className="menu-items-container">
         {menuItems.map((item, index) => (
           <MenuItemComponent
@@ -491,7 +475,6 @@ function Ui() {
             setActiveSubMenuId={setActiveSubMenuId}
           />
         ))}
-        {/* <AddToCartButton /> */}
       </div>
     </div>
   );

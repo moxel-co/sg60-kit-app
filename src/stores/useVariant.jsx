@@ -28,8 +28,13 @@ export default create((set, get) => ({
 
     // UI
     isUiHidden: false,
+    setIsUiHidden: (isHidden) => set({ isUiHidden: isHidden }),
 
     // Light Boxes
     isOrderLightBoxOpen: false,
-    setIsOrderLightBoxOpen: (isOpen) => set({ isOrderLightBoxOpen: isOpen }), // Add this setter
+    setIsOrderLightBoxOpen: (isOpen) => set({ isOrderLightBoxOpen: isOpen }),
+    isNameNumberLightBoxOpen: false,
+    setIsNameNumberLightBoxOpen: (isOpen) => set({ isNameNumberLightBoxOpen: isOpen }),
+    setJerseyName: (name) => set({ jerseyName: name }),
+    setJerseyNumber: (number) => set({ jerseyNumber: number }),
 }));

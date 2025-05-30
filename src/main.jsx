@@ -11,8 +11,7 @@ import App from './App.jsx';
 import Ui from './Ui.tsx';
 import Moxel from './components/Moxel.jsx';
 import OrderLightBox from './components/OrderLightBox.tsx';
-
-// import { App } from './test.jsx'; // Importing the test component
+import NameNumberLightBox from './components/NameNumberLightBox.tsx';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
@@ -21,6 +20,7 @@ root.render(
     <Ui />
     <Moxel />
     <OrderLightBox />
+    <NameNumberLightBox />
     <Canvas>
       <Suspense fallback={<Loading />}>
         <App />
@@ -28,6 +28,3 @@ root.render(
     </Canvas>
   </React.StrictMode>
 );
-
-
-// root.render(<App />)

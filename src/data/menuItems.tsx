@@ -3,6 +3,7 @@ import {
   Palette,
   Shirt,
   Joystick,
+  Type,
 } from 'lucide-react';
 import {
   BodyReliableIcon,
@@ -25,13 +26,11 @@ import { jerseyVariants } from './jersey.ts';
 import { jerseyPresets } from './presets.ts';
 import { ReactNode, useMemo } from 'react';
 
-
 // Get current selected variants
 const baseVariants = jerseyVariants.filter((variant) => variant.type === 'base');
 const graphicsVariants = jerseyVariants.filter((variant) => variant.type === 'graphics');
 const motifVariants = jerseyVariants.filter((variant) => variant.type === 'motif');
 const jerseyPresetVariants = jerseyPresets.filter((variant) => variant.type === 'preset');
-
 
 // Dynamic icons for menu items based on selected variant
 const HeadstockIcon = () => {
@@ -61,57 +60,9 @@ const updateDynamicCamera = (targetType: string) => {
   });
 };
 
-const BodyColorIcon = () => {
-  const body = useVariant((state) => state.body);
-  const variant = jerseyVariants.find(v => v.id === `${body}`);
-  const IconComponent = variant?.icon || BodyReliableIcon;
-  return <IconComponent size={56} color={"white"} />;
-};
-
-const NeckColorIcon = () => {
-  return <NeckIcon size={56} color={"white"} />;
-};
-
-const HeadstockColorIcon = () => {
-  const headstock = useVariant((state) => state.headstock);
-  const variant = jerseyVariants.find(v => v.id === `${headstock}`);
-  const IconComponent = variant?.icon || InlaySharkfinIcon;
-  return <IconComponent size={56} color={"white"} />;
-}
-
-const FretboardColorIcon = () => {
-  return <FretboardIcon size={56} color={"white"} />;
-};
-
-const NeckBindingColorIcon = () => {
-  return <FretboardBindingIcon size={56} color={"white"} />;
-};
-
-const InlayColorIcon = () => {
-  const inlay = useVariant((state) => state.inlay);
-  const variant = jerseyVariants.find(v => v.id === `${inlay}`);
-  const IconComponent = variant?.icon || InlaySharkfinIcon;
-  return <IconComponent size={56} color={"white"} />;
-};
-
-const NeckButtonColorIcon = () => {
-  return <NeckButtonsIcon size={56} color={"white"} />;
-};
-
-const ArcadeButtonsColorIcon = () => {
-  return <Joystick size={56} color={"white"} />;
-};
-
-const PickGuardColorIcon = () => {
-  return <PickGuardIcon size={56} color={"white"} />;
-};
-
-const HardwareColorIcon = () => {
-  return <HardwareIcon size={56} color={"white"} />;
-};
-
-const StrummerSideColorIcon = () => {
-  return <StrummerSideIcon size={56} color={"white"} />;
+const handleColorSelect = (colorType: string, color: string) => {
+  useVariant.setState({ bodyColor: color });
+  useVariant.setState({ targetType: 'body' });
 };
 
 // Create a custom hook that returns the customiseMenuItems array
@@ -120,6 +71,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
   const base = useVariant((state) => state.base);
   const graphics = useVariant((state) => state.graphics);
   const motif = useVariant((state) => state.motif);
+  const setIsNameNumberLightBoxOpen = useVariant((state) => state.setIsNameNumberLightBoxOpen);
 
   return useMemo(() => [
     {
@@ -187,17 +139,24 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
       })),
     },
     {
-      icon: <Palette size={56} />,
-      label: 'Colors',
+      icon: <Type size={56} />,
+      label: 'Text',
       items: [
         {
-          icon: <BodyColorIcon />,
-          label: 'Body',
-          isColorPicker: true,
-          swatches: ColorSwatches,
-          onColorSelect: (color: string) => handleColorSelect('Body', color),
+          icon: <Type size={56} color="white" />,
+          label: 'Name and Number',
+          onClick: () => {
+            setIsNameNumberLightBoxOpen(true);
+          },
         },
       ],
     },
-  ], [preset, base, graphics, motif]);
+    {
+      icon: <Palette size={56} />,
+      label: 'Colors',
+      isColorPicker: true,
+      swatches: ColorSwatches,
+      onColorSelect: handleColorSelect,
+    },
+  ], [preset, base, graphics, motif, setIsNameNumberLightBoxOpen]);
 };
