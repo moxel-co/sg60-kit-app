@@ -27,7 +27,7 @@ export default create((set, get) => ({
     targetCameraTarget: [0, 8, 0],
 
     // UI
-    isUiHidden: false,
+    isUiHidden: true,
     setIsUiHidden: (isHidden) => set({ isUiHidden: isHidden }),
 
     // Light Boxes

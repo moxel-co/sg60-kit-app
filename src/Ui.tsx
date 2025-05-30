@@ -374,22 +374,26 @@ function Ui() {
       setIsUiHidden(false);
       timeoutRef.current = setTimeout(() => {
         setIsUiHidden(true);
-      }, 3000);
+      }, 5000);
     };
 
-    const handleMouseEvent = () => {
+    const handleActivity = () => {
       resetTimer();
     };
 
-    document.addEventListener('mousedown', handleMouseEvent);
-    document.addEventListener('mouseup', handleMouseEvent);
+    // Add event listeners for all relevant events
+    const events = ['mousedown', 'mouseup', 'mousemove', 'touchstart', 'touchend', 'touchmove', 'wheel'];
+    events.forEach(event => {
+      document.addEventListener(event, handleActivity);
+    });
 
     // Initial timer
     resetTimer();
 
     return () => {
-      document.removeEventListener('mousedown', handleMouseEvent);
-      document.removeEventListener('mouseup', handleMouseEvent);
+      events.forEach(event => {
+        document.removeEventListener(event, handleActivity);
+      });
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
