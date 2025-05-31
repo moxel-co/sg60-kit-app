@@ -73,19 +73,31 @@ export function Jersey(props) {
     })
   })
 
-  const NumberDecal = ({ meshRef, position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
+
+  const NameDecal = ({ position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
 
     return (
-      <Decal position={[-0.1, 7.7, -0.7]} rotation={[Math.PI*0.9,  Math.PI*-0.02, Math.PI*0.99]} scale={[2, 2, 1]} mesh={jerseyRef}>
-              <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-1}>
+      <Decal position={[-0.15, 8.6, -0.7]} rotation={[Math.PI*1.1,  Math.PI*-0.05, Math.PI*1.01]} scale={[2, 0.8, 1]} mesh={jerseyRef}>
+              <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-2}>
                 <RenderTexture attach="map">
-                  <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} rotation={[0,0,0]} />
-                  <ambientLight intensity={Math.PI} />
-                  <directionalLight position={[10, 10, 5]} />
-                  <Text position={[0,4,0]} fontSize={1} material={m_text} font={font.path}>
+                  <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
+                  <Text fontSize={3} material={m_text} font={font.path}>
                     {jerseyNameState}
                   </Text>
-                  <Text fontSize={6} material={m_text} font={font.path}>
+                </RenderTexture>
+              </meshStandardMaterial>
+            </Decal>
+    );
+  };
+
+  const NumberDecal = ({ position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
+
+    return (
+      <Decal position={[-0.08, 7.6, -0.7]} rotation={[Math.PI*0.92,  Math.PI*-0.02, Math.PI*0.98]} scale={[2, 1.5, 1]} mesh={jerseyRef}> 
+              <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-3}>
+                <RenderTexture attach="map">
+                  <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
+                  <Text fontSize={11} material={m_text} font={font.path}>
                     {jerseyNumberState}
                   </Text>
                 </RenderTexture>
@@ -93,6 +105,7 @@ export function Jersey(props) {
             </Decal>
     );
   };
+
 
   return (
     <group {...props} dispose={null}>
@@ -183,6 +196,7 @@ export function Jersey(props) {
           ref = {jerseyRef}
         />
         <NumberDecal/>
+        <NameDecal/>
         <mesh
           castShadow
           receiveShadow
