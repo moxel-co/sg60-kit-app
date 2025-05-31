@@ -6,6 +6,7 @@ export default create((set, get) => ({
     base: 'base_design_1',
     texture: 'base-design-1',
     motif: 'motif_merlion',
+    font: 'font_baseball',
     jerseyName: 'SG',
     jerseyNumber: '60',
     color: 'color_home',

@@ -23,6 +23,7 @@ import {
 } from './colors';
 import useVariant from '../stores/useVariant';
 import { jerseyVariants } from './jersey.ts';
+import { FontVariants } from './fonts.ts';
 import { jerseyPresets } from './presets.ts';
 import { ReactNode, useMemo } from 'react';
 
@@ -32,6 +33,7 @@ const graphicsVariants = jerseyVariants.filter((variant) => variant.type === 'gr
 const motifVariants = jerseyVariants.filter((variant) => variant.type === 'motif');
 const jerseyPresetVariants = jerseyPresets.filter((variant) => variant.type === 'preset');
 const colorVariants = ColorSwatches.filter((variant) => variant.type === 'color');
+const fontVariants = FontVariants.filter((variant) => variant.type === 'font');
 
 // Dynamic icons for menu items based on selected variant
 const HeadstockIcon = () => {
@@ -73,6 +75,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
   const graphics = useVariant((state) => state.graphics);
   const motif = useVariant((state) => state.motif);
   const color = useVariant((state) => state.color);
+  const font = useVariant((state) => state.font);
   const setIsNameNumberLightBoxOpen = useVariant((state) => state.setIsNameNumberLightBoxOpen);
 
   return useMemo(() => [
@@ -144,6 +147,18 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
       icon: <Type size={56} />,
       label: 'Text',
       items: [
+        // Font variants first
+        ...fontVariants.map((variant) => ({
+          // Use variant.icon if it exists, otherwise fallback to Type icon
+          icon: variant.icon ? <variant.icon size={56} color="white" /> : <Type size={56} color="white" />,
+          label: variant.name,
+          onClick: () => {
+            useVariant.setState({ font: variant.id });
+            updateDynamicCamera(variant.type);
+          },
+          isActive: font === variant.id,
+        })),
+        // Name and Number at the end
         {
           icon: <Type size={56} color="white" />,
           label: 'Name and Number',
@@ -165,5 +180,5 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
         isActive: color === variant.id,
       })),
     },
-  ], [preset, base, graphics, motif, setIsNameNumberLightBoxOpen]);
+  ], [preset, base, graphics, motif, font, setIsNameNumberLightBoxOpen]);
 };

@@ -16,6 +16,7 @@ import useVariant from "./stores/useVariant.jsx";
 import { DynamicCamera } from "./components/DynamicCamera.jsx";
 import ShowcaseCamera from "./components/ShowcaseCamera.jsx";
 import { Effects } from "./components/Effects.tsx";
+import { useEffect } from 'react';
 
 
 export default function App() {
@@ -23,6 +24,18 @@ export default function App() {
   const isPostEffectsEnabled = useVariant((state) => state.isPostEffectsEnabled);
   const isShowcaseViewEnabled = useVariant((state) => state.isShowcaseViewEnabled);
   const shadowOffset = useVariant((state) => state.shadowOffset);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const jerseyName = params.get('name');
+    const jerseyNumber = params.get('number');
+    const showcase = params.get('showcase');
+    if (jerseyName) useVariant.setState({ jerseyName });
+    if (jerseyNumber) useVariant.setState({ jerseyNumber });
+    if (showcase !== null) {
+      useVariant.setState({ isShowcaseViewEnabled: showcase === "true" });
+    }
+  }, []);
 
   return (
     <>

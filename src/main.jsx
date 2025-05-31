@@ -13,6 +13,7 @@ import Moxel from './components/Moxel.jsx';
 import OrderLightBox from './components/OrderLightBox.tsx';
 import NameNumberLightBox from './components/NameNumberLightBox.tsx';
 
+
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
 root.render(

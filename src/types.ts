@@ -11,6 +11,13 @@ export interface ColorSwatch {
   roughness?: number;
 }
 
+export interface FontType {
+  id: string;
+  name: string;
+  type: string;
+  path: string;
+}
+
 export interface JerseyVariant {
   id: string;
   name: string;
