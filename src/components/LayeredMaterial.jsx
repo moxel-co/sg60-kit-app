@@ -55,7 +55,7 @@ const LayeredMaterial = ({
                 #ifdef USE_MAP
                     vec4 baseTexColor = texture2D(baseTexture, vMapUv);
                     vec4 motifTexColor = texture2D(motifTexture, vMapUv * 40.0);
-                    float alpha = (step(0.5, (1.0 - baseTexColor.r))) * motifTexColor.r;
+                    float alpha = (step(0.5, (1.0 - baseTexColor.r))) * step(0.5,motifTexColor.r);
                     vec3 blendedColor = mix(primary_color, secondary_color, (1.0 - alpha)*1.0);
                     diffuseColor.rgb = blendedColor;
                 #endif
