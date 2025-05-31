@@ -11,6 +11,7 @@ import App from './App.jsx';
 import Ui from './Ui.tsx';
 import Moxel from './components/Moxel.jsx';
 import OrderLightBox from './components/OrderLightBox.tsx';
+import ShareLightBox from './components/ShareLightBox.tsx'
 import NameNumberLightBox from './components/NameNumberLightBox.tsx';
 
 
@@ -21,6 +22,7 @@ root.render(
     <Ui />
     <Moxel />
     <OrderLightBox />
+    <ShareLightBox />
     <NameNumberLightBox />
     <Canvas>
       <Suspense fallback={<Loading />}>

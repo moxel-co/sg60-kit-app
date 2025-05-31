@@ -35,6 +35,8 @@ export default create((set, get) => ({
     // Light Boxes
     isOrderLightBoxOpen: false,
     setIsOrderLightBoxOpen: (isOpen) => set({ isOrderLightBoxOpen: isOpen }),
+    isShareLightBoxOpen: false,
+    setIsShareLightBoxOpen: (isOpen) => set({ isShareLightBoxOpen: isOpen }),
     isNameNumberLightBoxOpen: false,
     setIsNameNumberLightBoxOpen: (isOpen) => set({ isNameNumberLightBoxOpen: isOpen }),
     setJerseyName: (name) => set({ jerseyName: name }),

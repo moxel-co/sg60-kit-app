@@ -38,7 +38,7 @@ export default function Loading() {
             <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#242424]">
                 <div className="relative w-32 h-32">
                     <img
-                        src="/sg60-kit.svg"
+                        src="/sg60-jersey.svg"
                         alt="Loading"
                         className="w-full h-full"
                         style={{
@@ -47,7 +47,7 @@ export default function Loading() {
                         }}
                     />
                     <img
-                        src="/sg60-kit.svg"
+                        src="/sg60-jersey.svg"
                         alt="Loading"
                         className="absolute top-0 left-0 w-full h-full"
                         style={{

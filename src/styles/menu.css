@@ -41,6 +41,12 @@
          md:scale-[0.547] 2xl:scale-[0.711] 4xl:scale-[1.138] transition-all duration-200;
 }
 
+.menu-button-icon,
+.share-button-icon {
+  @apply absolute inset-0 flex items-center justify-center scale-[0.615]
+         md:scale-[0.547] 2xl:scale-[0.711] 4xl:scale-[1.138] transition-all duration-200;
+}
+
 .menu-button-hover {
   @apply absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-200;
 }
@@ -71,7 +77,16 @@
   @apply transition-colors duration-200 hover:bg-transparent;
 }
 
+.share-button {
+  @apply transition-colors duration-200 hover:bg-transparent;
+}
+
+
 .cart-button:hover .cart-button-icon {
+  @apply text-yellow-400 scale-110 opacity-100;
+}
+
+.share-button:hover .share-button-icon {
   @apply text-yellow-400 scale-110 opacity-100;
 }
 

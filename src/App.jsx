@@ -27,11 +27,20 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const jerseyName = params.get('name');
-    const jerseyNumber = params.get('number');
-    const showcase = params.get('showcase');
+    const jerseyName = params.get("name");
+    const jerseyNumber = params.get("number");
+    const base = params.get("base");
+    const motif = params.get("motif");
+    const color = params.get("color");
+    const graphics = params.get("graphics");
+    const showcase = params.get("showcase");
+
     if (jerseyName) useVariant.setState({ jerseyName });
     if (jerseyNumber) useVariant.setState({ jerseyNumber });
+    if (base) useVariant.setState({ base });
+    if (motif) useVariant.setState({ motif });
+    if (color) useVariant.setState({ color });
+    if (graphics) useVariant.setState({ graphics });
     if (showcase !== null) {
       useVariant.setState({ isShowcaseViewEnabled: showcase === "true" });
     }

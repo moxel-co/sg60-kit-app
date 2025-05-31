@@ -5,7 +5,8 @@ import { Share2 } from 'lucide-react';
 const ShareButton = () => {
     const [isHovered, setIsHovered] = useState(false);
 
-    const setIsShareLightBoxOpen = useVariant((state) => state.setIsOrderLightBoxOpen);
+    const setIsShareLightBoxOpen = useVariant((state) => state.setIsShareLightBoxOpen);
+    
 
     const handleShare = () => {
         if (typeof gtag === 'function') {
@@ -32,4 +33,4 @@ const ShareButton = () => {
     );
 };
 
-export default AddToCartButton;
+export default ShareButton;
