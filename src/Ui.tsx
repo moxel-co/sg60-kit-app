@@ -5,6 +5,7 @@ import { MenuItem } from './types';
 import { ColorSwatches } from './components/ColorSwatches';
 import useVariant from './stores/useVariant';
 import AddToCartButton from './components/AddToCart';
+import ShareButton from './components/Share';
 
 function SubMenuItem({ item, parentOpen, onSubMenuOpen, activeSubMenuId, setActiveSubMenuId }: { 
   item: MenuItem;
