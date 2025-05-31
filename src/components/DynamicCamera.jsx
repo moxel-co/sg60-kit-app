@@ -21,28 +21,20 @@ export function DynamicCamera() {
       position: [0, 8, 10],
       target: [0, 8, 0],
     },
-    headstock: {
-      position: [0, 8, 3],
-      target: [0, 8, 0],
-    },
     base: {
       position: [0, 8, 6],
       target: [0, 8, 0],
     },
-    inlay: {
+    graphics: {
+      position: [0, 8, 6],
+      target: [0, 8, 0],
+    },
+    motif: {
       position: [0, 8, 3],
       target: [0, 8, 0],
     },
-    fretboard: {
-      position: [0, 8, 5],
-      target: [0, 8, 0],
-    },
-    neck: {
-      position: [0, 8, 5],
-      target: [0, 8, 0],
-    },
-    neckButtons: {
-      position: [0, 8, 2],
+    text: {
+      position: [0, 8, -5],
       target: [0, 8, 0],
     },
   };

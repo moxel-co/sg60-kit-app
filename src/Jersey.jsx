@@ -7,6 +7,7 @@ import LayeredMaterial from './components/LayeredMaterial.jsx'
 
 import { ColorSwatches } from './data/colors.ts';
 import { jerseyVariants } from './data/jersey.ts';
+import { FontVariants } from './data/fonts.ts';
 
 const asset_name = 'prpJersey'
 
@@ -17,7 +18,8 @@ export function Jersey(props) {
   const poseState = useVariant((state) => state.pose);
   const textureState = useVariant((state) => state.texture);
   const motifState = useVariant((state) => state.motif);
-  const jerseyNameState = useVariant((state) => state.jerseyName);
+  const fontState = useVariant((state) => state.font);
+  const jerseyNameState = useVariant((state) => state.jerseyName).toUpperCase();
   const jerseyNumberState = useVariant((state) => state.jerseyNumber);
 
   const jerseyRef = useRef()
@@ -26,6 +28,7 @@ export function Jersey(props) {
   // Color library
   const color = ColorSwatches.find((color) => color.id === colorState);
   const motif = jerseyVariants.find((variant) => variant.id === motifState);
+  const font = FontVariants.find((variant) => variant.id === fontState);
 
 
   // Define textures
@@ -79,10 +82,10 @@ export function Jersey(props) {
                   <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} rotation={[0,0,0]} />
                   <ambientLight intensity={Math.PI} />
                   <directionalLight position={[10, 10, 5]} />
-                  <Text position={[0,4,0]} fontSize={1} material={m_text}>
+                  <Text position={[0,4,0]} fontSize={1} material={m_text} font={font.path}>
                     {jerseyNameState}
                   </Text>
-                  <Text fontSize={6} material={m_text}>
+                  <Text fontSize={6} material={m_text} font={font.path}>
                     {jerseyNumberState}
                   </Text>
                 </RenderTexture>

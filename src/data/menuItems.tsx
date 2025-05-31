@@ -154,7 +154,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
           label: variant.name,
           onClick: () => {
             useVariant.setState({ font: variant.id });
-            updateDynamicCamera(variant.type);
+            updateDynamicCamera('text');
           },
           isActive: font === variant.id,
         })),
@@ -164,6 +164,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
           label: 'Name and Number',
           onClick: () => {
             setIsNameNumberLightBoxOpen(true);
+            updateDynamicCamera('text');
           },
         },
       ],
