@@ -3,13 +3,13 @@ import { create } from 'zustand';
 export default create((set, get) => ({
     // Guitar state
     preset: 'preset_merlion',
-    base: 'base_design_1',
+    base: 'base_wavy',
     texture: 'base-design-1',
     motif: 'motif_merlion',
     font: 'font_bebasneue',
     jerseyName: 'SG',
     jerseyNumber: '60',
-    color: 'color_home',
+    color: 'color_mixed',
     shadowOffset: 0,
     offsetPos: [0, 0],
     pose: 'poseC',

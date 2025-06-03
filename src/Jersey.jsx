@@ -16,7 +16,7 @@ export function Jersey(props) {
 
   const colorState = useVariant((state) => state.color);
   const poseState = useVariant((state) => state.pose);
-  const textureState = useVariant((state) => state.texture);
+  const baseState = useVariant((state) => state.base);
   const motifState = useVariant((state) => state.motif);
   const fontState = useVariant((state) => state.font);
   const jerseyNameState = useVariant((state) => state.jerseyName).toUpperCase();
@@ -29,12 +29,14 @@ export function Jersey(props) {
   const color = ColorSwatches.find((color) => color.id === colorState);
   const motif = jerseyVariants.find((variant) => variant.id === motifState);
   const font = FontVariants.find((variant) => variant.id === fontState);
+  const base = jerseyVariants.find((variant) => variant.id === baseState);
+  const texture = base.texture
 
 
   // Define textures
   const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
   const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
-  const texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${textureState}.png`);
+  const t_texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${texture}.png`);
   const motifMap = useLoader(THREE.TextureLoader, `/assets/prpJersey/${motif.texture}.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
@@ -47,10 +49,12 @@ export function Jersey(props) {
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
   const m_body = new THREE.MeshStandardMaterial({color: 0x333333, roughness: 0.2, metalness: 1})
   const m_jerseyLayered = LayeredMaterial({
-    base_texture: texture,
+    base_texture: t_texture,
     motif_texture: motifMap,
     primary_color: color.primary_color,
-    secondary_color: color.secondary_color
+    secondary_color: color.secondary_color,
+    tertiary_color: color.tertiary_color,
+    icon_color: color.icon_color,
   })
   const m_text = new THREE.MeshBasicMaterial({ color: color.primary_color })
 

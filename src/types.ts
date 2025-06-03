@@ -4,6 +4,7 @@ export interface ColorSwatch {
   primary_color: string;
   secondary_color?: string;
   tertiary_color?: string;
+  icon_color?: string;
   name: string;
   type: string;
   id: string;

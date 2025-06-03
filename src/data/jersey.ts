@@ -16,10 +16,10 @@ import { JerseyVariant } from '../types';
 export const jerseyVariants: JerseyVariant[] = [
     // Body Variants
     {
-        id: 'base_design1',
-        name: 'Base Design 1',
+        id: 'base_wavy',
+        name: 'Base Wavy',
         type: 'base',
-        texture: 'base-design-1',
+        texture: 'tex_base_wavy',
         offsetPos: [0,0],
         icon: BodyViperIcon,
     },

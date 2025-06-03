@@ -1,6 +1,7 @@
 import { ColorSwatch } from '../types';
 
 export const ColorSwatches: ColorSwatch[] = [
-  { primary_color: '#e33a0b', secondary_color: '#ffffff', tertiary_color: '#8c1521', type: 'color', name: 'Home', id: 'color_home', metalness: 0, roughness: 0.3 },
-  { primary_color: '#298ba3', secondary_color: '#ffffff', tertiary_color: '#8c1521', type: 'color', name: 'Away', id: 'color_away', metalness: 0, roughness: 0.3 },
+  { primary_color: '#c7180c', secondary_color: '#ffffff', tertiary_color: '#141d33', icon_color: '#c7180c', type: 'color', name: 'Home', id: 'color_home', metalness: 0, roughness: 0.3 },
+  { primary_color: '#ffffff', secondary_color: '#141d33', tertiary_color: '#c7180c', icon_color: '#c7180c', type: 'color', name: 'Away', id: 'color_away', metalness: 0, roughness: 0.3 },
+  { primary_color: '#c7180c', secondary_color: '#141d33', tertiary_color: '#ffffff', icon_color: '#c7180c', type: 'color', name: 'Mixed', id: 'color_mixed', metalness: 0, roughness: 0.3 },
 ];
