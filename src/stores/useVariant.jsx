@@ -3,8 +3,7 @@ import { create } from 'zustand';
 export default create((set, get) => ({
     // Guitar state
     preset: 'preset_merlion',
-    base: 'base_wavy',
-    texture: 'base-design-1',
+    base: 'base_stripes',
     motif: 'motif_merlion',
     font: 'font_bebasneue',
     jerseyName: 'SG',

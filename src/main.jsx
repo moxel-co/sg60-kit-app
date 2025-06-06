@@ -8,6 +8,7 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import Loading from './Loading.jsx';
 import App from './App.jsx';
+// import App from './test.jsx'; // Change this to your main component file
 import Ui from './Ui.tsx';
 import Moxel from './components/Moxel.jsx';
 import OrderLightBox from './components/OrderLightBox.tsx';
@@ -31,3 +32,7 @@ root.render(
     </Canvas>
   </React.StrictMode>
 );
+
+
+
+// root.render(<App />)

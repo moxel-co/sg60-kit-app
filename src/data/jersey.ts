@@ -24,10 +24,10 @@ export const jerseyVariants: JerseyVariant[] = [
         icon: BodyViperIcon,
     },
     {
-        id: 'base_design2',
-        name: 'Base Design 2',
+        id: 'base_stripes',
+        name: 'Base Stripes',
         type: 'base',
-        texture: 'base-design-2',
+        texture: 'tex_base_stripes',
         offsetPos: [0,0],   
         icon: BodyArrowIcon,
     },
