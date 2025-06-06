@@ -5,26 +5,26 @@ interface IconProps {
   color?: string;
 }
 
-export const HeadStockArrowIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const BaseWavyIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
       backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-arrow.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-arrow.png") center/contain no-repeat`,
+      WebkitMask: `url("/icons/base-wavy.png") center/contain no-repeat`,
+      mask: `url("/icons/base-wavy.png") center/contain no-repeat`,
     }}
   />
 );
 
-export const HeadStockAviatorIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const BaseStripesIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
       backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-aviator.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-aviator.png") center/contain no-repeat`,
+      WebkitMask: `url("/icons/base-stripes.png") center/contain no-repeat`,
+      mask: `url("/icons/base-stripes.png") center/contain no-repeat`,
     }}
   />
 );

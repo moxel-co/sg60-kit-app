@@ -1,6 +1,6 @@
 import {
-    HeadStockArrowIcon,
-    HeadStockAviatorIcon,
+    BaseWavyIcon,
+    BaseStripesIcon,
     HeadStockBriefcaseIcon,
     HeadStockViperIcon,
     BodyViperIcon,
@@ -17,23 +17,23 @@ export const jerseyVariants: JerseyVariant[] = [
     // Body Variants
     {
         id: 'base_wavy',
-        name: 'Base Wavy',
+        name: 'Wavy',
         type: 'base',
         texture: 'tex_base_wavy',
         offsetPos: [0,0],
-        icon: BodyViperIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'base_stripes',
-        name: 'Base Stripes',
+        name: 'Stripes',
         type: 'base',
         texture: 'tex_base_stripes',
         offsetPos: [0,0],   
-        icon: BodyArrowIcon,
+        icon: BaseStripesIcon,
     },
     {
         id: 'base_design3',
-        name: 'Base Design 3',
+        name: 'Stars',
         type: 'base',
         texture: 'design-3',
         shadowOffset: 0,
@@ -52,13 +52,13 @@ export const jerseyVariants: JerseyVariant[] = [
         id: 'graphics_foodie',
         name: 'Foodie',
         type: 'graphics',
-        icon: HeadStockArrowIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'graphics_landmarks',
         name: 'Landmarks',
         type: 'graphics',
-        icon: HeadStockAviatorIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'graphics_orchid',
