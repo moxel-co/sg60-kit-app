@@ -29,326 +29,38 @@ export const BaseStripesIcon = ({ size, color = 'currentColor' }: IconProps) => 
   />
 );
 
-export const HeadStockBriefcaseIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontBaseballIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
       backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-briefcase.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-briefcase.png") center/contain no-repeat`,
+      WebkitMask: `url("/icons/font-baseball.png") center/contain no-repeat`,
+      mask: `url("/icons/font-baseball.png") center/contain no-repeat`,
     }}
   />
 );
 
-export const HeadStockBroadcasterIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontBebasNeueIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
       backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-broadcaster.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-broadcaster.png") center/contain no-repeat`,
+      WebkitMask: `url("/icons/font-bebasNeue.png") center/contain no-repeat`,
+      mask: `url("/icons/font-bebasNeue.png") center/contain no-repeat`,
     }}
   />
 );
 
-export const HeadStockFallenAngelIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontCollegeIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
       backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-fallenangel.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-fallenangel.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockHeadlessIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-headless.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-headless.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockNinjaStarIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-ninjastar.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-ninjastar.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockOversizedIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-oversized.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-oversized.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockPlankSpankerIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-plankspanker.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-plankspanker.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockReliableIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-reliable.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-reliable.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockSummitIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-summit.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-summit.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockThunderbirdIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-thunderbird.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-thunderbird.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const HeadStockViperIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/headstock-viper.png") center/contain no-repeat`,
-      mask: `url("/icons/headstock-viper.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyBriefcaseIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-briefcase.png") center/contain no-repeat`,
-      mask: `url("/icons/body-briefcase.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyBroadcasterIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-broadcaster.png") center/contain no-repeat`,
-      mask: `url("/icons/body-broadcaster.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyJazzyIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-jazzy.png") center/contain no-repeat`,
-      mask: `url("/icons/body-jazzy.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyReliableIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-reliable.png") center/contain no-repeat`,
-      mask: `url("/icons/body-reliable.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyThunderbirdIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-thunderbird.png") center/contain no-repeat`,
-      mask: `url("/icons/body-thunderbird.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyViperIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-viper.png") center/contain no-repeat`,
-      mask: `url("/icons/body-viper.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyArrowIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-arrow.png") center/contain no-repeat`,
-      mask: `url("/icons/body-arrow.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyAviatorIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-aviator.png") center/contain no-repeat`,
-      mask: `url("/icons/body-aviator.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyFallenAngelIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-fallenangel.png") center/contain no-repeat`,
-      mask: `url("/icons/body-fallenangel.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyHammerIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-hammer.png") center/contain no-repeat`,
-      mask: `url("/icons/body-hammer.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyHeadlessIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-headless.png") center/contain no-repeat`,
-      mask: `url("/icons/body-headless.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyHeadlessPickguardIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-headlessPickGuard.png") center/contain no-repeat`,
-      mask: `url("/icons/body-headlessPickGuard.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyShredHammerIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-shredhammer.png") center/contain no-repeat`,
-      mask: `url("/icons/body-shredhammer.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyPlankSpankerIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-plankspanker.png") center/contain no-repeat`,
-      mask: `url("/icons/body-plankspanker.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodySummitIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-summit.png") center/contain no-repeat`,
-      mask: `url("/icons/body-summit.png") center/contain no-repeat`,
-    }}
-  />
-);
-
-export const BodyYoungsterIcon = ({ size, color = 'currentColor' }: IconProps) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/body-youngster.png") center/contain no-repeat`,
-      mask: `url("/icons/body-youngster.png") center/contain no-repeat`,
+      WebkitMask: `url("/icons/font-college.png") center/contain no-repeat`,
+      mask: `url("/icons/font-college.png") center/contain no-repeat`,
     }}
   />
 );

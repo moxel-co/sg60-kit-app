@@ -17,6 +17,7 @@ export interface FontType {
   name: string;
   type: string;
   path: string;
+  icon: ReactNode;
 }
 
 export interface JerseyVariant {

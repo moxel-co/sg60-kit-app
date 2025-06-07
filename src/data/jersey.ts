@@ -1,11 +1,6 @@
 import {
     BaseWavyIcon,
     BaseStripesIcon,
-    HeadStockBriefcaseIcon,
-    HeadStockViperIcon,
-    BodyViperIcon,
-    BodyArrowIcon,
-    BodyAviatorIcon,
     InlayBlockIcon,
     InlayBirdIcon,
     InlayClassicdotIcon,
@@ -38,7 +33,7 @@ export const jerseyVariants: JerseyVariant[] = [
         texture: 'design-3',
         shadowOffset: 0,
         offsetPos: [-0.0,0],
-        icon: BodyAviatorIcon,
+        icon: BaseStripesIcon,
     },
 
     // Headstock Variants
@@ -46,7 +41,7 @@ export const jerseyVariants: JerseyVariant[] = [
         id: 'graphics_merlion',
         name: 'Merlion',
         type: 'graphics',
-        icon: HeadStockViperIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'graphics_foodie',
@@ -64,7 +59,7 @@ export const jerseyVariants: JerseyVariant[] = [
         id: 'graphics_orchid',
         name: 'Orchid',
         type: 'graphics',
-        icon: HeadStockBriefcaseIcon,
+        icon: BaseWavyIcon,
     },
 
 

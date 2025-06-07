@@ -1,7 +1,5 @@
 import {
-    BodyThunderbirdIcon,
-    BodyArrowIcon,
-    BodyShredHammerIcon,
+    BaseWavyIcon,
 } from '../data/icons';
 import { JerseyPresets } from '../types';
 
@@ -16,7 +14,6 @@ export const jerseyPresets: JerseyPresets[] = [
         headstock2: 'headstock_arrow',
         inlay: 'inlay_classicDot',
         inlay2: 'inlay_classicDot',
-        starPowerButton: true,
         bodyColor: 'White',
         neckColor: 'White',
         headstockColor: 'Black',
@@ -34,7 +31,7 @@ export const jerseyPresets: JerseyPresets[] = [
         offsetPos: [0,0],
         neckOffsetPosLeft: [0, -0.0, 0],
         neckOffsetRotLeft: [0, 0, -0.0],
-        icon: BodyArrowIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'preset_thunderbird',
@@ -63,7 +60,7 @@ export const jerseyPresets: JerseyPresets[] = [
         neckOffsetPosLeft: [0, -0.0, 0],
         neckOffsetRotLeft: [0, 0, -0.0],
         isDualNeck: false,
-        icon: BodyThunderbirdIcon,
+        icon: BaseWavyIcon,
     },
     {
         id: 'preset_shredhammer',
@@ -96,6 +93,6 @@ export const jerseyPresets: JerseyPresets[] = [
         dualNeckOffsetRot: [0, 0, 0],
         dualNeckOffsetPosLeft: [-1.13, 0, 0],
         dualNeckOffsetRotLeft: [0, 0, 0],
-        icon: BodyShredHammerIcon,
+        icon: BaseWavyIcon,
     },
 ];

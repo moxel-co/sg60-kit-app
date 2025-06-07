@@ -2,20 +2,10 @@ import React from 'react';
 import {
   Palette,
   Shirt,
-  Joystick,
   Type,
 } from 'lucide-react';
 import {
-  BodyReliableIcon,
-  HeadStockReliableIcon,
   InlaySharkfinIcon,
-  FretboardIcon,
-  FretboardBindingIcon,
-  HardwareIcon,
-  NeckIcon,
-  NeckButtonsIcon,
-  PickGuardIcon,
-  StrummerSideIcon,
 } from './icons.tsx';
 import { MenuItem } from '../types';
 import { 
@@ -36,21 +26,21 @@ const colorVariants = ColorSwatches.filter((variant) => variant.type === 'color'
 const fontVariants = FontVariants.filter((variant) => variant.type === 'font');
 
 // Dynamic icons for menu items based on selected variant
-const HeadstockIcon = () => {
+const BaseIcon = () => {
+  const base = useVariant((state) => state.base);
+  const variant = jerseyVariants.find(v => v.id === `${base}`);
+  const IconComponent = variant?.icon;
+  return <IconComponent size={56} color={"white"} />;
+};
+
+const GraphicsIcon = () => {
   const headstock = useVariant((state) => state.headstock);
   const variant = jerseyVariants.find(v => v.id === `${headstock}`);
-  const IconComponent = variant?.icon || HeadStockReliableIcon;
+  const IconComponent = variant?.icon || InlaySharkfinIcon;
   return <IconComponent size={56} color={"white"} />;
 };
 
-const BodyIcon = () => {
-  const body = useVariant((state) => state.body);
-  const variant = jerseyVariants.find(v => v.id === `${body}`);
-  const IconComponent = variant?.icon || BodyReliableIcon;
-  return <IconComponent size={56} color={"white"} />;
-};
-
-const InlayIcon = () => {
+const MotifIcon = () => {
   const inlay = useVariant((state) => state.inlay);
   const variant = jerseyVariants.find(v => v.id === `${inlay}`);
   const IconComponent = variant?.icon || InlaySharkfinIcon;
@@ -100,8 +90,8 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
       })),
     },
     {
-      icon: <BodyIcon /> as ReactNode,
-      label: 'Base Design',
+      icon: <BaseIcon /> as ReactNode,
+      label: 'Base',
       items: baseVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
         label: variant.name,
@@ -118,7 +108,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
       })),
     },
     {
-      icon: <HeadstockIcon /> as ReactNode,
+      icon: <GraphicsIcon /> as ReactNode,
       label: 'Graphics',
       items: graphicsVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,
@@ -131,7 +121,7 @@ export const useCustomiseMenuItems = (): MenuItem[] => {
       })),
     },
     {
-      icon: <InlayIcon /> as ReactNode,
+      icon: <MotifIcon /> as ReactNode,
       label: 'Motif',
       items: motifVariants.map((variant) => ({
         icon: <variant.icon size={56} color="white" />,

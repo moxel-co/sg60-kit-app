@@ -67,7 +67,7 @@ const ShareLightBox: React.FC = () => {
             </button>
 
             <h3 className="text-base text-white mb-4 pr-8 text-center">
-              Share your creation with your friends.
+              Share your creation!.
             </h3>
 
             {/* Screenshot of the React app */}

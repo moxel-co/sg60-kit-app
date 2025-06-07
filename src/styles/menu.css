@@ -37,13 +37,13 @@
 
 .menu-button-icon,
 .cart-button-icon {
-  @apply absolute inset-0 flex items-center justify-center scale-[0.615]
+  @apply absolute inset-0 flex items-center justify-center scale-[0.7]
          md:scale-[0.547] 2xl:scale-[0.711] 4xl:scale-[1.138] transition-all duration-200;
 }
 
 .menu-button-icon,
 .share-button-icon {
-  @apply absolute inset-0 flex items-center justify-center scale-[0.615]
+  @apply absolute inset-0 flex items-center justify-center scale-[0.7]
          md:scale-[0.547] 2xl:scale-[0.711] 4xl:scale-[1.138] transition-all duration-200;
 }
 
