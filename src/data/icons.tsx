@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/font.css';
 
 interface IconProps {
   size: number;
@@ -29,40 +30,140 @@ export const BaseStripesIcon = ({ size, color = 'currentColor' }: IconProps) => 
   />
 );
 
-export const FontBaseballIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontArsenalIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/font-baseball.png") center/contain no-repeat`,
-      mask: `url("/icons/font-baseball.png") center/contain no-repeat`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'ArsenalUEFA1516',
+      fontSize: size * 0.8,
+      color: color,
     }}
-  />
+  >
+    A
+  </div>
 );
 
-export const FontBebasNeueIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontBrazilIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/font-bebasNeue.png") center/contain no-repeat`,
-      mask: `url("/icons/font-bebasNeue.png") center/contain no-repeat`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'Brazil2018',
+      fontSize: size * 0.8,
+      color: color,
     }}
-  />
+  >
+    A
+  </div>
 );
 
-export const FontCollegeIcon = ({ size, color = 'currentColor' }: IconProps) => (
+export const FontMexcellentIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
       width: size,
       height: size,
-      backgroundColor: color,
-      WebkitMask: `url("/icons/font-college.png") center/contain no-repeat`,
-      mask: `url("/icons/font-college.png") center/contain no-repeat`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'Mexcellent',
+      fontSize: size * 0.8,
+      color: color,
     }}
-  />
+  >
+    A
+  </div>
+);
+
+export const FontNigeriaIcon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'Nigeria2018',
+      fontSize: size * 0.8,
+      color: color,
+    }}
+  >
+    A
+  </div>
+);
+
+export const FontPremierLeagueIcon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'PremierLeagueFont2018',
+      fontSize: size * 0.8,
+      color: color,
+    }}
+  >
+    A
+  </div>
+);
+
+export const FontRealMadrid15Icon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'ReadMadrid1516',
+      fontSize: size * 0.8,
+      color: color,
+    }}
+  >
+    A
+  </div>
+);
+
+export const FontRealMadrid16Icon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'RealMadrid1617',
+      fontSize: size * 0.8,
+      color: color,
+    }}
+  >
+    A
+  </div>
+);
+
+export const FontSoccerJerseyIcon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'SoccerJersey',
+      fontSize: size * 0.8,
+      color: color,
+    }}
+  >
+    A
+  </div>
 );
 
 export const InlayBirdIcon = ({ size, color = 'currentColor' }: IconProps) => (
@@ -329,7 +430,6 @@ export const StrummerSideIcon = ({ size, color = 'currentColor' }: IconProps) =>
   />
 );
 
-
 export const HandRightIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{
@@ -341,7 +441,6 @@ export const HandRightIcon = ({ size, color = 'currentColor' }: IconProps) => (
     }}
   />
 );
-
 
 export const HandLeftIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div

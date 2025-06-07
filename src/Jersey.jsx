@@ -85,7 +85,7 @@ export function Jersey(props) {
               <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-2}>
                 <RenderTexture attach="map">
                   <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
-                  <Text fontSize={3} material={m_text} font={font.path}>
+                  <Text fontSize={font.name_size} material={m_text} font={font.path}>
                     {jerseyNameState}
                   </Text>
                 </RenderTexture>
@@ -97,11 +97,11 @@ export function Jersey(props) {
   const NumberDecal = ({ position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
 
     return (
-      <Decal position={[-0.08, 7.6, -0.7]} rotation={[Math.PI*0.92,  Math.PI*-0.02, Math.PI*0.98]} scale={[2, 1.5, 1]} mesh={jerseyRef}> 
+      <Decal position={[-0.12, 7.6, -0.7]} rotation={[Math.PI*0.92,  Math.PI*-0.02, Math.PI*0.98]} scale={[2, 1.5, 1]} mesh={jerseyRef}> 
               <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-3}>
                 <RenderTexture attach="map">
                   <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
-                  <Text fontSize={11} material={m_text} font={font.path}>
+                  <Text fontSize={font.number_size} material={m_text} font={font.path}>
                     {jerseyNumberState}
                   </Text>
                 </RenderTexture>
@@ -110,10 +110,27 @@ export function Jersey(props) {
     );
   };
 
+  const LoadFont = () => {
+    return (
+      <group>
+        <Text font="/assets/font/ArsenalUEFA1516.ttf"></Text>
+        <Text font="/assets/font/Brazil2018.ttf"></Text>
+        <Text font="/assets/font/mexcellent.ttf"></Text>
+        <Text font="/assets/font/Nigeria2018.ttf"></Text>
+        <Text font="/assets/font/PremierLeagueFont2018.ttf"></Text>
+        <Text font="/assets/font/read-madrid-16-17.ttf"></Text>
+        <Text font="/assets/font/real-madrid-16-17.ttf"></Text>
+        <Text font="/assets/font/soccer-jersey.ttf"></Text>
+      </group>
+    );
+  };
+
+
 
   return (
     <group {...props} dispose={null}>
       <group name='default' visible={poseState === 'default'}>
+        <LoadFont />
         <mesh
           castShadow
           receiveShadow
@@ -219,8 +236,8 @@ export function Jersey(props) {
 }
 
 useGLTF.preload(`./assets/${asset_name}/model.glb`)
-useTexture.preload(`./assets/${asset_name}/base-design-1.png`)
-useTexture.preload(`./assets/${asset_name}/base-design-2.png`)
+useTexture.preload(`./assets/${asset_name}/tex_base_stripes.png`)
+useTexture.preload(`./assets/${asset_name}/tex_base_wavy.png`)
 useTexture.preload(`./assets/${asset_name}/motif-merlion.png`)
 useTexture.preload(`./assets/${asset_name}/motif-stars.png`)
 useTexture.preload(`./assets/${asset_name}/motif-singlish.png`)

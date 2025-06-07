@@ -5,7 +5,7 @@ export default create((set, get) => ({
     preset: 'preset_merlion',
     base: 'base_stripes',
     motif: 'motif_merlion',
-    font: 'font_bebasneue',
+    font: 'font_arsenal',
     jerseyName: 'SG',
     jerseyNumber: '60',
     color: 'color_mixed',

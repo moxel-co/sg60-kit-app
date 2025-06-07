@@ -373,8 +373,10 @@ function Ui() {
         clearTimeout(timeoutRef.current);
       }
       setIsUiHidden(false);
+      useVariant.setState({ isRotationEnabled: false });
       timeoutRef.current = setTimeout(() => {
         setIsUiHidden(true);
+        useVariant.setState({ isRotationEnabled: true });
       }, 4000);
     };
 

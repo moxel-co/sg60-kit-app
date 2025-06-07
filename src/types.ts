@@ -17,6 +17,8 @@ export interface FontType {
   name: string;
   type: string;
   path: string;
+  name_size: number;
+  number_size: number;
   icon: ReactNode;
 }
 

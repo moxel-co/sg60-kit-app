@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'ArsenalUEFA1516';
+  src: url('/assets/font/ArsenalUEFA1516.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brazil2018';
+  src: url('/assets/font/Brazil2018.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mexcellent';
+  src: url('/assets/font/mexcellent.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nigeria2018';
+  src: url('/assets/font/Nigeria2018.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PremierLeagueFont2018';
+  src: url('/assets/font/PremierLeagueFont2018.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RealMadrid1516';
+  src: url('/assets/font/real-madrid-15-16.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RealMadrid1617';
+  src: url('/assets/font/real-madrid-16-17.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SoccerJersey';
+  src: url('/assets/font/soccer-jersey.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
