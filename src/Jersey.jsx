@@ -37,6 +37,7 @@ export function Jersey(props) {
   const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
   const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
   const t_texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${texture}.png`);
+  const t_graphics = useLoader(THREE.TextureLoader, `./assets/prpJersey/tex_graphics_merlion.png`);
   const motifMap = useLoader(THREE.TextureLoader, `/assets/prpJersey/${motif.texture}.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
@@ -51,6 +52,7 @@ export function Jersey(props) {
   const m_jerseyLayered = LayeredMaterial({
     base_texture: t_texture,
     motif_texture: motifMap,
+    graphics_texture: t_graphics,
     primary_color: color.primary_color,
     secondary_color: color.secondary_color,
     tertiary_color: color.tertiary_color,

@@ -11,6 +11,7 @@ function hexToVec3(hex) {
 const LayeredMaterial = ({
     base_texture,
     motif_texture,
+    graphics_texture,
     primary_color = '#ff0000',
     secondary_color = '#ffffff',
     tertiary_color= '#ffffff', 
@@ -22,6 +23,7 @@ const LayeredMaterial = ({
     normalMap.flipY = false;
     icon_texture.flipY = false;
     base_texture.flipY = false;
+    graphics_texture.flipY = false;
     motif_texture.flipY = false;
     motif_texture.wrapS = THREE.RepeatWrapping;
     motif_texture.wrapT = THREE.RepeatWrapping;
@@ -44,6 +46,7 @@ const LayeredMaterial = ({
         mat.onBeforeCompile = (shader) => {
             shader.uniforms.baseTexture = { value: base_texture };
             shader.uniforms.motifTexture = { value: motif_texture };
+            shader.uniforms.graphicsTexture = { value: graphics_texture };
             shader.uniforms.iconTexture = { value: icon_texture };
             shader.uniforms.primary_color = { value: new THREE.Color(...primaryVec3) };
             shader.uniforms.secondary_color = { value: new THREE.Color(...secondaryVec3) };
@@ -53,6 +56,7 @@ const LayeredMaterial = ({
             shader.fragmentShader = `
                 uniform sampler2D baseTexture;
                 uniform sampler2D motifTexture;
+                uniform sampler2D graphicsTexture;
                 uniform sampler2D iconTexture;
                 uniform vec3 primary_color;
                 uniform vec3 secondary_color;
@@ -67,6 +71,7 @@ const LayeredMaterial = ({
                 #ifdef USE_MAP
                     vec4 baseTexColor = texture2D(baseTexture, vMapUv);
                     vec4 motifTexColor = texture2D(motifTexture, vMapUv * 40.0);
+                    vec4 graphicsTexColor = texture2D(graphicsTexture, vMapUv);
                     vec2 iconUv = vMapUv * 34.0;
                     iconUv.x += -12.0;
                     iconUv.y += -12.5;
@@ -75,7 +80,8 @@ const LayeredMaterial = ({
                     vec3 blendedColor = mix(primary_color, secondary_color, (1.0 - alpha)*1.0);
                     vec3 blendedColor2 = mix(secondary_color, primary_color, baseTexColor.r);
                     vec3 blendedColor3 = mix(blendedColor2, tertiary_color, baseTexColor.b);
-                    vec3 blendedIcon = mix(blendedColor3, icon_color, iconTexture.r);
+                    vec3 blendedGraphics = mix(blendedColor3, primary_color, graphicsTexColor.r);
+                    vec3 blendedIcon = mix(blendedGraphics, icon_color, iconTexture.r);
                     diffuseColor.rgb = blendedIcon;
                 #endif
                 `

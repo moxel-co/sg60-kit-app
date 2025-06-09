@@ -11,7 +11,7 @@ export default create((set, get) => ({
     color: 'color_mixed',
     shadowOffset: 0,
     offsetPos: [0, 0],
-    pose: 'poseC',
+    pose: 'default',
 
     // Settings state
     isRotationEnabled: false,
