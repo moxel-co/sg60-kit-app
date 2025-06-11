@@ -19,25 +19,25 @@ export function Jersey(props) {
   const baseState = useVariant((state) => state.base);
   const motifState = useVariant((state) => state.motif);
   const fontState = useVariant((state) => state.font);
+  const graphicsState = useVariant((state) => state.graphics);
   const jerseyNameState = useVariant((state) => state.jerseyName).toUpperCase();
   const jerseyNumberState = useVariant((state) => state.jerseyNumber);
 
   const jerseyRef = useRef()
-
 
   // Color library
   const color = ColorSwatches.find((color) => color.id === colorState);
   const motif = jerseyVariants.find((variant) => variant.id === motifState);
   const font = FontVariants.find((variant) => variant.id === fontState);
   const base = jerseyVariants.find((variant) => variant.id === baseState);
+  const graphics = jerseyVariants.find((variant) => variant.id === graphicsState);
   const texture = base.texture
-
 
   // Define textures
   const t_color = useLoader(THREE.TextureLoader, `./assets/${asset_name}/color.png`);
   const t_normal = useLoader(THREE.TextureLoader, `./assets/${asset_name}/normal.png`);
   const t_texture = useLoader(THREE.TextureLoader, `./assets/prpJersey/${texture}.png`);
-  const t_graphics = useLoader(THREE.TextureLoader, `./assets/prpJersey/tex_graphics_merlion.png`);
+  const t_graphics = useLoader(THREE.TextureLoader, `./assets/prpJersey/${graphics.texture}.png`);
   const motifMap = useLoader(THREE.TextureLoader, `/assets/prpJersey/${motif.texture}.png`);
   t_normal.flipY = false;
   t_color.flipY = false;
@@ -83,7 +83,7 @@ export function Jersey(props) {
   const NameDecal = ({ position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
 
     return (
-      <Decal position={[-0.15, 8.6, -0.7]} rotation={[Math.PI*1.1,  Math.PI*-0.05, Math.PI*1.01]} scale={[2, 0.8, 1]} mesh={jerseyRef}>
+      <Decal position={position} rotation={rotation} scale={scale} mesh={jerseyRef}>
               <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-2}>
                 <RenderTexture attach="map">
                   <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
@@ -99,7 +99,7 @@ export function Jersey(props) {
   const NumberDecal = ({ position, rotation = [0, 0, 0], scale = [1, 1, 1] }) => {
 
     return (
-      <Decal position={[-0.12, 7.6, -0.7]} rotation={[Math.PI*0.92,  Math.PI*-0.02, Math.PI*0.98]} scale={[2, 1.5, 1]} mesh={jerseyRef}> 
+      <Decal position={position} rotation={rotation} scale={scale} mesh={jerseyRef}> 
               <meshStandardMaterial transparent polygonOffset polygonOffsetFactor={-3}>
                 <RenderTexture attach="map">
                   <PerspectiveCamera makeDefault manual aspect={1.5} position={[0, 0, 10]} rotation={[0,0,0]} />
@@ -120,7 +120,7 @@ export function Jersey(props) {
         <Text font="/assets/font/mexcellent.ttf"></Text>
         <Text font="/assets/font/Nigeria2018.ttf"></Text>
         <Text font="/assets/font/PremierLeagueFont2018.ttf"></Text>
-        <Text font="/assets/font/read-madrid-16-17.ttf"></Text>
+        <Text font="/assets/font/real-madrid-15-16.ttf"></Text>
         <Text font="/assets/font/real-madrid-16-17.ttf"></Text>
         <Text font="/assets/font/soccer-jersey.ttf"></Text>
       </group>
@@ -131,6 +131,14 @@ export function Jersey(props) {
 
   return (
     <group {...props} dispose={null}>
+      <mesh
+        position={[0, 0, -5]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={[5, 5, 1]}
+        material={m_jerseyLayered}
+      >
+        <planeGeometry args={[2, 2]} />
+      </mesh>
       <group name='default' visible={poseState === 'default'}>
         <LoadFont />
         <mesh
@@ -138,18 +146,23 @@ export function Jersey(props) {
           receiveShadow
           geometry={nodes.default_jersey_geo.geometry}
           material={nodes.default_jersey_geo.material}
+          {...(poseState === 'default' ? { ref: jerseyRef } : {})}
         />
+        {poseState === 'default' && <NameDecal position={[-0.05, 8.6, -0.7]} rotation={[Math.PI*1.05,  Math.PI*0, Math.PI*1]} scale={[2, 0.8, 1]}/>}
+        {poseState === 'default' && <NumberDecal position={[-0.05, 7.6, -0.7]} rotation={[Math.PI*0.96,  Math.PI*0, Math.PI*1]} scale={[2, 1.5, 1]}/>}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.default_shorts_geo.geometry}
           material={nodes.default_shorts_geo.material}
+          visible={false}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.default_socks_geo.geometry}
           material={nodes.default_socks_geo.material}
+          visible={false}
         />
       </group>
       <group name='poseA' visible={poseState === 'poseA'}>
@@ -164,7 +177,10 @@ export function Jersey(props) {
           receiveShadow
           geometry={nodes.poseA_jersey_geo.geometry}
           material={nodes.poseA_jersey_geo.material}
+          {...(poseState === 'poseA' ? { ref: jerseyRef } : {})}
         />
+        {poseState === 'poseA' && <NameDecal position={[-0.05, 8.6, -0.7]} rotation={[Math.PI*1.05,  Math.PI*0, Math.PI*1]} scale={[2, 0.8, 1]}/>}
+        {poseState === 'poseA' && <NumberDecal position={[-0.05, 7.6, -0.7]} rotation={[Math.PI*0.96,  Math.PI*0, Math.PI*1]} scale={[2, 1.5, 1]}/>}
         <mesh
           castShadow
           receiveShadow
@@ -190,7 +206,10 @@ export function Jersey(props) {
           receiveShadow
           geometry={nodes.poseB_jersey_geo.geometry}
           material={nodes.poseB_jersey_geo.material}
+          {...(poseState === 'poseB' ? { ref: jerseyRef } : {})}
         />
+        {poseState === 'poseB' && <NameDecal position={[-0.07, 8.6, -0.7]} rotation={[Math.PI*1.05,  Math.PI*0.07, Math.PI*1]} scale={[2, 0.8, 1]}/>}
+        {poseState === 'poseB' && <NumberDecal position={[-0.07, 7.6, -0.7]} rotation={[Math.PI*0.96,  Math.PI*0.07, Math.PI*1]} scale={[2, 1.5, 1]}/>}
         <mesh
           castShadow
           receiveShadow
@@ -216,10 +235,10 @@ export function Jersey(props) {
           receiveShadow
           geometry={nodes.poseC_jersey_geo.geometry}
           material={nodes.poseC_jersey_geo.material}
-          ref = {jerseyRef}
+          {...(poseState === 'poseC' ? { ref: jerseyRef } : {})}
         />
-        <NumberDecal/>
-        <NameDecal/>
+        {poseState === 'poseC' && <NameDecal position={[-0.15, 8.6, -0.7]} rotation={[Math.PI*1.1,  Math.PI*-0.05, Math.PI*1.01]} scale={[2, 0.8, 1]}/>}
+        {poseState === 'poseC' && <NumberDecal position={[-0.12, 7.6, -0.7]} rotation={[Math.PI*0.92,  Math.PI*-0.02, Math.PI*0.98]} scale={[2, 1.5, 1]}/>}
         <mesh
           castShadow
           receiveShadow

@@ -13,7 +13,7 @@ const ShareLightBox: React.FC = () => {
   const color = useVariant((state) => state.color);
   const motif = useVariant((state) => state.motif);
   const font = useVariant((state) => state.font);
-  const texture = useVariant((state) => state.texture);
+  const graphics = useVariant((state) => state.graphics);
 
   const [animationClass, setAnimationClass] = useState('opacity-0 scale-95');
 
@@ -40,7 +40,8 @@ const ShareLightBox: React.FC = () => {
 
   const handleCopyLink = () => {
     const baseUrl = window.location.origin;
-    const dynamicLink = `${baseUrl}/?name=${jerseyName}&number=${jerseyNumber}&color=${color}&motif=${motif}&font=${font}&texture=${texture}&showcase=true`;
+    const dynamicLink = `${baseUrl}/?name=${jerseyName}&number=${jerseyNumber}&color=${color}&graphics=${graphics}&font=${font}`;
+    // const dynamicLink = `${baseUrl}/?name=${jerseyName}&number=${jerseyNumber}&color=${color}&graphics=${graphics}&font=${font}&showcase=true`;
     navigator.clipboard.writeText(dynamicLink);
     alert('Link copied to clipboard!');
   };

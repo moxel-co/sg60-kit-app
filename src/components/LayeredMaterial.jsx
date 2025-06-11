@@ -71,17 +71,20 @@ const LayeredMaterial = ({
                 #ifdef USE_MAP
                     vec4 baseTexColor = texture2D(baseTexture, vMapUv);
                     vec4 motifTexColor = texture2D(motifTexture, vMapUv * 40.0);
-                    vec4 graphicsTexColor = texture2D(graphicsTexture, vMapUv);
+                    vec2 graphicsUv = vMapUv * 4.5;
+                    graphicsUv.x += -0.55;
+                    graphicsUv.y += -1.5;
+                    vec4 graphicsTexColor = texture2D(graphicsTexture, graphicsUv);
                     vec2 iconUv = vMapUv * 34.0;
                     iconUv.x += -12.0;
                     iconUv.y += -12.5;
                     vec4 iconTexture = texture2D(iconTexture, iconUv);
                     float alpha = (step(0.5, (1.0 - baseTexColor.r))) * step(0.5,motifTexColor.r);
                     vec3 blendedColor = mix(primary_color, secondary_color, (1.0 - alpha)*1.0);
-                    vec3 blendedColor2 = mix(secondary_color, primary_color, baseTexColor.r);
+                    vec3 graphicsAlpha = mix(vec3(baseTexColor.r), vec3(graphicsTexColor.r), baseTexColor.a);
+                    vec3 blendedColor2 = mix(secondary_color, primary_color, graphicsAlpha.r);
                     vec3 blendedColor3 = mix(blendedColor2, tertiary_color, baseTexColor.b);
-                    vec3 blendedGraphics = mix(blendedColor3, primary_color, graphicsTexColor.r);
-                    vec3 blendedIcon = mix(blendedGraphics, icon_color, iconTexture.r);
+                    vec3 blendedIcon = mix(blendedColor3, icon_color, iconTexture.r);
                     diffuseColor.rgb = blendedIcon;
                 #endif
                 `
