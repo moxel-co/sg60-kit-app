@@ -131,14 +131,6 @@ export function Jersey(props) {
 
   return (
     <group {...props} dispose={null}>
-      <mesh
-        position={[0, 0, -5]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        scale={[5, 5, 1]}
-        material={m_jerseyLayered}
-      >
-        <planeGeometry args={[2, 2]} />
-      </mesh>
       <group name='default' visible={poseState === 'default'}>
         <LoadFont />
         <mesh
