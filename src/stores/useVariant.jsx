@@ -20,6 +20,9 @@ export default create((set, get) => ({
     isPostEffectsEnabled: false,
     isShowcaseViewEnabled: false,
 
+    //lightrig
+    lightrig: 'lightrig_studio',
+
     // Camera state
     resetCamera: 0,
     cameraPosition: [0, 8, 10],

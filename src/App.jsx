@@ -14,6 +14,7 @@ import { BlendFunction } from "postprocessing";
 import { Jersey } from "./Jersey.jsx";
 import useVariant from "./stores/useVariant.jsx";
 import { DynamicCamera } from "./components/DynamicCamera.jsx";
+import { Lighting } from "./components/Lighting.jsx";
 import ShowcaseCamera from "./components/ShowcaseCamera.jsx";
 import { Effects } from "./components/Effects.tsx";
 import { useEffect } from 'react';
@@ -34,6 +35,7 @@ export default function App() {
     const color = params.get("color");
     const graphics = params.get("graphics");
     const showcase = params.get("showcase");
+    const font = params.get("font");
 
     if (jerseyName) useVariant.setState({ jerseyName });
     if (jerseyNumber) useVariant.setState({ jerseyNumber });
@@ -41,6 +43,7 @@ export default function App() {
     if (motif) useVariant.setState({ motif });
     if (color) useVariant.setState({ color });
     if (graphics) useVariant.setState({ graphics });
+    if (font) useVariant.setState({ font });
     if (showcase !== null) {
       useVariant.setState({ isShowcaseViewEnabled: showcase === "true" });
     }
@@ -49,24 +52,7 @@ export default function App() {
   return (
     <>
       <DynamicCamera />
-      <Environment
-        files={'./assets/common/latlong/studio_small_03_graded_1k.exr'}
-        background={false}
-        ground={{
-          height: 15, // Height of the camera that was used to create the env map (Default: 15)
-          radius: 40, // Radius of the world. (Default 60)
-          scale: 50, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
-        }}
-        />
-        {/* <Environment
-        files={'./assets/common/latlong/stadium_1k.exr'}
-        background={true}
-        ground={{
-          height: 10, // Height of the camera that was used to create the env map (Default: 15)
-          radius: 100, // Radius of the world. (Default 60)
-          scale: 200, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
-        }}
-        /> */}
+      <Lighting />
       <ContactShadows position={[0, shadowOffset, 0]} opacity={0.3} />
       <Jersey />
       {isShowcaseViewEnabled && <ShowcaseCamera />}

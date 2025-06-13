@@ -45,6 +45,7 @@ export function Jersey(props) {
   t_normal.wrapS = THREE.RepeatWrapping;
   t_normal.wrapT = THREE.RepeatWrapping;
 
+  
   // Define material library
   const m_jersyMat = new THREE.MeshStandardMaterial({map: t_color, roughness: 0.7, normalMap: t_normal, normalScale: new THREE.Vector2(0.3, 0.3)})
   const m_grey = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.7, metalness: 0.2})
@@ -53,13 +54,13 @@ export function Jersey(props) {
     base_texture: t_texture,
     motif_texture: motifMap,
     graphics_texture: t_graphics,
+    graphics_color: base.altColor ? color.secondary_color : color.primary_color,
     primary_color: color.primary_color,
     secondary_color: color.secondary_color,
     tertiary_color: color.tertiary_color,
-    icon_color: color.icon_color,
+    icon_color: base.altColor ? color.secondary_color : color.primary_color,
   })
-  const m_text = new THREE.MeshBasicMaterial({ color: color.primary_color })
-
+  const m_text = new THREE.MeshBasicMaterial({ color: base.altColor ? color.secondary_color : color.primary_color })
 
 
 // Create a mapping between material names and material objects
@@ -251,6 +252,10 @@ export function Jersey(props) {
 useGLTF.preload(`./assets/${asset_name}/model.glb`)
 useTexture.preload(`./assets/${asset_name}/tex_base_stripes.png`)
 useTexture.preload(`./assets/${asset_name}/tex_base_wavy.png`)
+useTexture.preload(`./assets/${asset_name}/tex_base_classic.png`)
+useTexture.preload(`./assets/${asset_name}/tex_graphics_merlion.png`)
+useTexture.preload(`./assets/${asset_name}/tex_graphics_orchid.png`)
+useTexture.preload(`./assets/${asset_name}/tex_graphics_skyline.png`)
 useTexture.preload(`./assets/${asset_name}/motif-merlion.png`)
 useTexture.preload(`./assets/${asset_name}/motif-stars.png`)
 useTexture.preload(`./assets/${asset_name}/motif-singlish.png`)

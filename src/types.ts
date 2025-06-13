@@ -30,6 +30,18 @@ export interface JerseyVariant {
   texture: string;
   shadowOffset: number;
   offsetPos: number[];
+  altColor?: boolean;
+}
+
+export interface LightRig {
+  id: string;
+  name: string;
+  type: 'lightrig';
+  texture: string;
+  height: number;
+  radius: number;
+  scale: number;
+  background: boolean;
 }
 
 export interface JerseyPresets {

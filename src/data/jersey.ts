@@ -17,6 +17,7 @@ export const jerseyVariants: JerseyVariant[] = [
         type: 'base',
         texture: 'tex_base_wavy',
         offsetPos: [0,0],
+        altColor: false,
         icon: BaseWavyIcon,
     },
     {
@@ -24,7 +25,8 @@ export const jerseyVariants: JerseyVariant[] = [
         name: 'Stripes',
         type: 'base',
         texture: 'tex_base_stripes',
-        offsetPos: [0,0],   
+        offsetPos: [0,0],
+        altColor: false,   
         icon: BaseStripesIcon,
     },
     {
@@ -34,6 +36,7 @@ export const jerseyVariants: JerseyVariant[] = [
         texture: 'tex_base_classic',
         shadowOffset: 0,
         offsetPos: [-0.0,0],
+        altColor: true,
         icon: BaseClassicIcon,
     },
 

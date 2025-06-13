@@ -32,12 +32,30 @@ export default function ShowcaseCamera(props) {
         currentAction.fadeOut(0)
         currentAction.stop() // ensure it's fully removed
       }
+
   
       currentAction = nextAction
       currentAction.reset().fadeIn(0).play()
       currentAction.clampWhenFinished = true
       currentAction.loop = THREE.LoopOnce
-  
+
+      useVariant.setState({lightrig: "lightrig_stadium"})
+      if (currentAction._clip.name === "CamAction1") {
+        useVariant.setState({
+            pose: "poseB",
+        })
+      }
+     if (currentAction._clip.name === "CamAction3") {
+        useVariant.setState({
+            pose: "poseA",
+        })
+      }
+     if (currentAction._clip.name === "CamAction4") {
+        useVariant.setState({
+            pose: "poseC",
+        })
+      }
+
       const mixer = currentAction.getMixer()
       const onFinished = () => {
         mixer.removeEventListener('finished', onFinished)
