@@ -30,6 +30,19 @@ export const BaseStripesIcon = ({ size, color = 'currentColor' }: IconProps) => 
   />
 );
 
+export const BaseClassicIcon = ({ size, color = 'currentColor' }: IconProps) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      backgroundColor: color,
+      WebkitMask: `url("/icons/base-classic.png") center/contain no-repeat`,
+      mask: `url("/icons/base-classic.png") center/contain no-repeat`,
+    }}
+  />
+);
+
+
 export const FontArsenalIcon = ({ size, color = 'currentColor' }: IconProps) => (
   <div
     style={{

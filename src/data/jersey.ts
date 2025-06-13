@@ -1,6 +1,7 @@
 import {
     BaseWavyIcon,
     BaseStripesIcon,
+    BaseClassicIcon,
     InlayBlockIcon,
     InlayBirdIcon,
     InlayClassicdotIcon,
@@ -27,13 +28,13 @@ export const jerseyVariants: JerseyVariant[] = [
         icon: BaseStripesIcon,
     },
     {
-        id: 'base_design3',
-        name: 'Stars',
+        id: 'base_classic',
+        name: 'Classic',
         type: 'base',
-        texture: 'design-3',
+        texture: 'tex_base_classic',
         shadowOffset: 0,
         offsetPos: [-0.0,0],
-        icon: BaseStripesIcon,
+        icon: BaseClassicIcon,
     },
 
     // Headstock Variants

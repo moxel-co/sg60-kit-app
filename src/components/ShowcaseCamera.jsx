@@ -8,11 +8,11 @@ export default function ShowcaseCamera(props) {
   const group = useRef()
   const animatedCamRef = useRef()
   const { camera } = useThree()
-  const { animations } = useGLTF('./assets/prpGuitar/camera.glb')
+  const { animations } = useGLTF('./assets/prpJersey/camera.glb')
   const { actions } = useAnimations(animations, group)
 
   // Animation sequence
-  const sequence = ['CamAction1', 'CamAction2', 'CamAction3', 'CamAction4', 'CamAction5']
+  const sequence = ['CamAction1', 'CamAction2', 'CamAction3', 'CamAction4']
   const indexRef = useRef(0)
 
   const isShowcaseViewEnabled = useVariant((state) => state.isShowcaseViewEnabled);
@@ -73,7 +73,7 @@ export default function ShowcaseCamera(props) {
           makeDefault={false}
           far={1000}
           near={0.1}
-          fov={37.996}
+          fov={28}
           position={[-0.031, 5.664, 2.838]}
           rotation={[0.093, 0.003, -0.747]}
         />
