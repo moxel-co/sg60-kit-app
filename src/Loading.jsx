@@ -8,6 +8,7 @@ import React, { useState, useEffect, useTransition } from 'react';
 const ICON_PATHS = [
     '/icons/base-wavy.png',
     '/icons/base-stripes.png',
+    '/icons/base-classic.png',
 ];
 
 export default function Loading({ onLoadingComplete }) {
@@ -31,9 +32,9 @@ export default function Loading({ onLoadingComplete }) {
 
                 await Promise.all(promises);
                 setIconsLoaded(true);
-                console.log('All icons preloaded successfully');
+                // console.log('All icons preloaded successfully');
             } catch (error) {
-                console.error('Error preloading icons:', error);
+                // console.error('Error preloading icons:', error);
                 // Still mark as loaded to prevent blocking
                 setIconsLoaded(true);
             }

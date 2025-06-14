@@ -1,4 +1,5 @@
 import { LightRig } from '../types';
+import { useTexture } from '@react-three/drei';
 
 export const Lightrig: LightRig[] = [
   {
@@ -22,3 +23,6 @@ export const Lightrig: LightRig[] = [
     background: true,
   },
 ];
+
+useTexture.preload(`/assets/common/latlong/studio_small_03_graded_1k.exr`)
+useTexture.preload(`/assets/common/latlong/stadium_1k.exr`)
